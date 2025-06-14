@@ -100,6 +100,12 @@
             this.promotionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.numRatingFeedback = new System.Windows.Forms.NumericUpDown();
+            this.txtCommentFeedback = new System.Windows.Forms.TextBox();
+            this.btnSaveFeedback = new System.Windows.Forms.Button();
             this.txtTime = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label52 = new System.Windows.Forms.Label();
@@ -117,6 +123,15 @@
             this.label44 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
+            this.AppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.durationDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.wstGrp14DataSet1 = new WindowsFormsApp1.WstGrp14DataSet();
             this.btnBook = new System.Windows.Forms.Button();
@@ -256,21 +271,10 @@
             this.invoiceTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.InvoiceTableAdapter();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceItemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.btnSaveFeedback = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtCommentFeedback = new System.Windows.Forms.TextBox();
-            this.numRatingFeedback = new System.Windows.Forms.NumericUpDown();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.AppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staffIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appointmentDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appointmentTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.durationDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvAppointmentHistory = new System.Windows.Forms.DataGridView();
+            this.lblCustomerHeader = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabInvoice.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -287,6 +291,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRatingFeedback)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
@@ -315,8 +321,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource1)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numRatingFeedback)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointmentHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -1078,6 +1083,67 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "APPOINTMENTS";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label55);
+            this.groupBox2.Controls.Add(this.label54);
+            this.groupBox2.Controls.Add(this.numRatingFeedback);
+            this.groupBox2.Controls.Add(this.txtCommentFeedback);
+            this.groupBox2.Controls.Add(this.btnSaveFeedback);
+            this.groupBox2.Location = new System.Drawing.Point(21, 560);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(504, 140);
+            this.groupBox2.TabIndex = 27;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Save FeedBack";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(268, 22);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(61, 19);
+            this.label55.TabIndex = 30;
+            this.label55.Text = "Rating";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(3, 22);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(81, 19);
+            this.label54.TabIndex = 29;
+            this.label54.Text = "Comment";
+            // 
+            // numRatingFeedback
+            // 
+            this.numRatingFeedback.Location = new System.Drawing.Point(263, 44);
+            this.numRatingFeedback.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numRatingFeedback.Name = "numRatingFeedback";
+            this.numRatingFeedback.Size = new System.Drawing.Size(188, 26);
+            this.numRatingFeedback.TabIndex = 28;
+            // 
+            // txtCommentFeedback
+            // 
+            this.txtCommentFeedback.Location = new System.Drawing.Point(6, 43);
+            this.txtCommentFeedback.Name = "txtCommentFeedback";
+            this.txtCommentFeedback.Size = new System.Drawing.Size(212, 26);
+            this.txtCommentFeedback.TabIndex = 26;
+            // 
+            // btnSaveFeedback
+            // 
+            this.btnSaveFeedback.Location = new System.Drawing.Point(29, 90);
+            this.btnSaveFeedback.Name = "btnSaveFeedback";
+            this.btnSaveFeedback.Size = new System.Drawing.Size(225, 37);
+            this.btnSaveFeedback.TabIndex = 25;
+            this.btnSaveFeedback.Text = "Save Feedback";
+            this.btnSaveFeedback.UseVisualStyleBackColor = true;
+            this.btnSaveFeedback.Click += new System.EventHandler(this.btnSaveFeedback_Click);
+            // 
             // txtTime
             // 
             this.txtTime.Location = new System.Drawing.Point(139, 57);
@@ -1259,6 +1325,78 @@
             this.dgvAppointments.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvAppointments_RowPrePaint);
             this.dgvAppointments.SelectionChanged += new System.EventHandler(this.dgvAppointments_SelectionChanged);
             // 
+            // AppointmentID
+            // 
+            this.AppointmentID.DataPropertyName = "AppointmentID";
+            this.AppointmentID.HeaderText = "AppointmentID";
+            this.AppointmentID.Name = "AppointmentID";
+            this.AppointmentID.ReadOnly = true;
+            this.AppointmentID.Width = 153;
+            // 
+            // customerIDDataGridViewTextBoxColumn1
+            // 
+            this.customerIDDataGridViewTextBoxColumn1.DataPropertyName = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn1.HeaderText = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn1.Name = "customerIDDataGridViewTextBoxColumn1";
+            this.customerIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.customerIDDataGridViewTextBoxColumn1.Width = 126;
+            // 
+            // staffIDDataGridViewTextBoxColumn1
+            // 
+            this.staffIDDataGridViewTextBoxColumn1.DataPropertyName = "StaffID";
+            this.staffIDDataGridViewTextBoxColumn1.HeaderText = "StaffID";
+            this.staffIDDataGridViewTextBoxColumn1.Name = "staffIDDataGridViewTextBoxColumn1";
+            this.staffIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.staffIDDataGridViewTextBoxColumn1.Width = 88;
+            // 
+            // appointmentDateDataGridViewTextBoxColumn
+            // 
+            this.appointmentDateDataGridViewTextBoxColumn.DataPropertyName = "AppointmentDate";
+            this.appointmentDateDataGridViewTextBoxColumn.HeaderText = "AppointmentDate";
+            this.appointmentDateDataGridViewTextBoxColumn.Name = "appointmentDateDataGridViewTextBoxColumn";
+            this.appointmentDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.appointmentDateDataGridViewTextBoxColumn.Width = 172;
+            // 
+            // appointmentTimeDataGridViewTextBoxColumn
+            // 
+            this.appointmentTimeDataGridViewTextBoxColumn.DataPropertyName = "AppointmentTime";
+            this.appointmentTimeDataGridViewTextBoxColumn.HeaderText = "AppointmentTime";
+            this.appointmentTimeDataGridViewTextBoxColumn.Name = "appointmentTimeDataGridViewTextBoxColumn";
+            this.appointmentTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.appointmentTimeDataGridViewTextBoxColumn.Width = 173;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.Width = 84;
+            // 
+            // Comments
+            // 
+            this.Comments.DataPropertyName = "Comments";
+            this.Comments.HeaderText = "Comments";
+            this.Comments.Name = "Comments";
+            this.Comments.ReadOnly = true;
+            this.Comments.Width = 115;
+            // 
+            // Rating
+            // 
+            this.Rating.DataPropertyName = "Rating";
+            this.Rating.HeaderText = "Rating";
+            this.Rating.Name = "Rating";
+            this.Rating.ReadOnly = true;
+            this.Rating.Width = 86;
+            // 
+            // durationDataGridViewTextBoxColumn1
+            // 
+            this.durationDataGridViewTextBoxColumn1.DataPropertyName = "Duration";
+            this.durationDataGridViewTextBoxColumn1.HeaderText = "Duration";
+            this.durationDataGridViewTextBoxColumn1.Name = "durationDataGridViewTextBoxColumn1";
+            this.durationDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.durationDataGridViewTextBoxColumn1.Width = 103;
+            // 
             // appointmentBindingSource
             // 
             this.appointmentBindingSource.DataMember = "Appointment";
@@ -1357,6 +1495,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label57);
+            this.tabPage3.Controls.Add(this.label56);
+            this.tabPage3.Controls.Add(this.lblCustomerHeader);
+            this.tabPage3.Controls.Add(this.dgvAppointmentHistory);
             this.tabPage3.Controls.Add(this.CustomerSearchtxt);
             this.tabPage3.Controls.Add(this.label28);
             this.tabPage3.Controls.Add(this.button7);
@@ -1708,6 +1850,7 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(1159, 98);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // customerIDDataGridViewTextBoxColumn
             // 
@@ -2567,138 +2710,42 @@
             this.invoiceItemBindingSource1.DataMember = "InvoiceItem";
             this.invoiceItemBindingSource1.DataSource = this.wstGrp14DataSet;
             // 
-            // btnSaveFeedback
+            // dgvAppointmentHistory
             // 
-            this.btnSaveFeedback.Location = new System.Drawing.Point(29, 90);
-            this.btnSaveFeedback.Name = "btnSaveFeedback";
-            this.btnSaveFeedback.Size = new System.Drawing.Size(225, 37);
-            this.btnSaveFeedback.TabIndex = 25;
-            this.btnSaveFeedback.Text = "Save Feedback";
-            this.btnSaveFeedback.UseVisualStyleBackColor = true;
-            this.btnSaveFeedback.Click += new System.EventHandler(this.btnSaveFeedback_Click);
+            this.dgvAppointmentHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvAppointmentHistory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvAppointmentHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAppointmentHistory.Location = new System.Drawing.Point(407, 198);
+            this.dgvAppointmentHistory.Name = "dgvAppointmentHistory";
+            this.dgvAppointmentHistory.Size = new System.Drawing.Size(756, 253);
+            this.dgvAppointmentHistory.TabIndex = 5;
             // 
-            // groupBox2
+            // lblCustomerHeader
             // 
-            this.groupBox2.Controls.Add(this.label55);
-            this.groupBox2.Controls.Add(this.label54);
-            this.groupBox2.Controls.Add(this.numRatingFeedback);
-            this.groupBox2.Controls.Add(this.txtCommentFeedback);
-            this.groupBox2.Controls.Add(this.btnSaveFeedback);
-            this.groupBox2.Location = new System.Drawing.Point(21, 560);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(504, 140);
-            this.groupBox2.TabIndex = 27;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Save FeedBack";
+            this.lblCustomerHeader.AutoSize = true;
+            this.lblCustomerHeader.Location = new System.Drawing.Point(960, 164);
+            this.lblCustomerHeader.Name = "lblCustomerHeader";
+            this.lblCustomerHeader.Size = new System.Drawing.Size(39, 20);
+            this.lblCustomerHeader.TabIndex = 6;
+            this.lblCustomerHeader.Text = "------";
             // 
-            // txtCommentFeedback
+            // label56
             // 
-            this.txtCommentFeedback.Location = new System.Drawing.Point(6, 43);
-            this.txtCommentFeedback.Name = "txtCommentFeedback";
-            this.txtCommentFeedback.Size = new System.Drawing.Size(212, 26);
-            this.txtCommentFeedback.TabIndex = 26;
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(854, 164);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(100, 20);
+            this.label56.TabIndex = 7;
+            this.label56.Text = "CUSTOMER";
             // 
-            // numRatingFeedback
+            // label57
             // 
-            this.numRatingFeedback.Location = new System.Drawing.Point(263, 44);
-            this.numRatingFeedback.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numRatingFeedback.Name = "numRatingFeedback";
-            this.numRatingFeedback.Size = new System.Drawing.Size(188, 26);
-            this.numRatingFeedback.TabIndex = 28;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(3, 22);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(81, 19);
-            this.label54.TabIndex = 29;
-            this.label54.Text = "Comment";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(268, 22);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(61, 19);
-            this.label55.TabIndex = 30;
-            this.label55.Text = "Rating";
-            // 
-            // AppointmentID
-            // 
-            this.AppointmentID.DataPropertyName = "AppointmentID";
-            this.AppointmentID.HeaderText = "AppointmentID";
-            this.AppointmentID.Name = "AppointmentID";
-            this.AppointmentID.ReadOnly = true;
-            this.AppointmentID.Width = 153;
-            // 
-            // customerIDDataGridViewTextBoxColumn1
-            // 
-            this.customerIDDataGridViewTextBoxColumn1.DataPropertyName = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn1.HeaderText = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn1.Name = "customerIDDataGridViewTextBoxColumn1";
-            this.customerIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.customerIDDataGridViewTextBoxColumn1.Width = 126;
-            // 
-            // staffIDDataGridViewTextBoxColumn1
-            // 
-            this.staffIDDataGridViewTextBoxColumn1.DataPropertyName = "StaffID";
-            this.staffIDDataGridViewTextBoxColumn1.HeaderText = "StaffID";
-            this.staffIDDataGridViewTextBoxColumn1.Name = "staffIDDataGridViewTextBoxColumn1";
-            this.staffIDDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.staffIDDataGridViewTextBoxColumn1.Width = 88;
-            // 
-            // appointmentDateDataGridViewTextBoxColumn
-            // 
-            this.appointmentDateDataGridViewTextBoxColumn.DataPropertyName = "AppointmentDate";
-            this.appointmentDateDataGridViewTextBoxColumn.HeaderText = "AppointmentDate";
-            this.appointmentDateDataGridViewTextBoxColumn.Name = "appointmentDateDataGridViewTextBoxColumn";
-            this.appointmentDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.appointmentDateDataGridViewTextBoxColumn.Width = 172;
-            // 
-            // appointmentTimeDataGridViewTextBoxColumn
-            // 
-            this.appointmentTimeDataGridViewTextBoxColumn.DataPropertyName = "AppointmentTime";
-            this.appointmentTimeDataGridViewTextBoxColumn.HeaderText = "AppointmentTime";
-            this.appointmentTimeDataGridViewTextBoxColumn.Name = "appointmentTimeDataGridViewTextBoxColumn";
-            this.appointmentTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.appointmentTimeDataGridViewTextBoxColumn.Width = 173;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusDataGridViewTextBoxColumn.Width = 84;
-            // 
-            // Comments
-            // 
-            this.Comments.DataPropertyName = "Comments";
-            this.Comments.HeaderText = "Comments";
-            this.Comments.Name = "Comments";
-            this.Comments.ReadOnly = true;
-            this.Comments.Width = 115;
-            // 
-            // Rating
-            // 
-            this.Rating.DataPropertyName = "Rating";
-            this.Rating.HeaderText = "Rating";
-            this.Rating.Name = "Rating";
-            this.Rating.ReadOnly = true;
-            this.Rating.Width = 86;
-            // 
-            // durationDataGridViewTextBoxColumn1
-            // 
-            this.durationDataGridViewTextBoxColumn1.DataPropertyName = "Duration";
-            this.durationDataGridViewTextBoxColumn1.HeaderText = "Duration";
-            this.durationDataGridViewTextBoxColumn1.Name = "durationDataGridViewTextBoxColumn1";
-            this.durationDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.durationDataGridViewTextBoxColumn1.Width = 103;
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(403, 164);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(197, 20);
+            this.label57.TabIndex = 8;
+            this.label57.Text = "APPOINTMENT HISTORY";
             // 
             // Form2
             // 
@@ -2732,6 +2779,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRatingFeedback)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).EndInit();
@@ -2768,9 +2818,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numRatingFeedback)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAppointmentHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3018,5 +3066,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rating;
         private System.Windows.Forms.DataGridViewTextBoxColumn durationDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Label lblCustomerHeader;
+        private System.Windows.Forms.DataGridView dgvAppointmentHistory;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label57;
     }
 }

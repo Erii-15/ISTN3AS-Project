@@ -686,6 +686,8 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Booking failed:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
 
 
@@ -1179,6 +1181,60 @@ namespace WindowsFormsApp1
             else
             {
                 MessageBox.Show("Please select an appointment first.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+        // my addition to Customer tab
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentRow != null)
+            {
+                int customerId = Convert.ToInt32(dataGridView2.CurrentRow.Cells["CustomerID"].Value);
+                string customerName = dataGridView2.CurrentRow.Cells["CustomerName"].Value.ToString();
+
+                lblCustomerHeader.Text = $"Appointment History for {customerName} (ID: {customerId})";
+
+                LoadAppointmentHistory(customerId);
+            }
+        }
+
+        private void LoadAppointmentHistory(int customerId)
+        {
+            var historyData = appointmentTableAdapter1.GetHistoryByCustomerID(customerId);
+            dgvAppointmentHistory.DataSource = historyData;
+            if (dgvAppointmentHistory.Columns.Contains("Duration"))
+            {
+                dgvAppointmentHistory.Columns["Duration"].Visible = false;
+            }
+        }
+
+       
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Get selected customer info
+                var row = dataGridView2.Rows[e.RowIndex];
+                int customerId = Convert.ToInt32(row.Cells["customerIDDataGridViewTextBoxColumn"].Value); // or use index
+                string customerName = row.Cells["firstNameDataGridViewTextBoxColumn"].Value?.ToString(); // adjust column name
+
+                // Set header label
+                lblCustomerHeader.Text = $"{customerName} ({customerId})";
+
+                // Fill appointment history grid
+                var historyData = appointmentTableAdapter1.GetHistoryByCustomerID(customerId);
+                dgvAppointmentHistory.DataSource = historyData;
             }
         }
     }
