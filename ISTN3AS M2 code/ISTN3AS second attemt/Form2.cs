@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
     public partial class Form2 : Form
     {
         System.Windows.Forms.ToolTip dgvToolTip = new System.Windows.Forms.ToolTip();
+        // checking if changes are working
 
         public Form2()
         {
