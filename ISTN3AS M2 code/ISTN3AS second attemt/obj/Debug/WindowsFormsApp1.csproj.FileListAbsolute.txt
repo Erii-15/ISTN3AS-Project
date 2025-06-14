@@ -151,7 +151,6 @@ C:\Users\223046815\Downloads\ISTN3AS M2 coding\ISTN3AS second attemt\ISTN3AS sec
 C:\Users\223046815\Source\Repos\Erii-15\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\223046815\Source\Repos\Erii-15\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\bin\Debug\WindowsFormsApp1.exe
 C:\Users\223046815\Source\Repos\Erii-15\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\bin\Debug\WindowsFormsApp1.pdb
-C:\Users\223046815\Source\Repos\Erii-15\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
 C:\Users\223046815\Source\Repos\Erii-15\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\223046815\Source\Repos\Erii-15\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\obj\Debug\WindowsFormsApp1.Form2.resources
 C:\Users\223046815\Source\Repos\Erii-15\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\obj\Debug\WindowsFormsApp1.Properties.Resources.resources

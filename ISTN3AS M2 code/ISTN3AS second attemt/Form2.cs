@@ -106,11 +106,14 @@ namespace WindowsFormsApp1
             //Load appointments into DataGridView
             LoadAppointments();
 
-            dgvAppointments.ReadOnly = true;
+            
+
+
+            //dgvAppointments.ReadOnly = true;
             //dgvAppointments.Columns[6].ReadOnly = false; // Comment column
             //dgvAppointments.Columns[7].ReadOnly = false; // Rating column
-            dgvAppointments.Columns["Comments"].ReadOnly = false;
-            dgvAppointments.Columns["Rating"].ReadOnly = false;
+            //dgvAppointments.Columns["Comments"].ReadOnly = false;
+            //dgvAppointments.Columns["Rating"].ReadOnly = false;
 
             if (!dgvAppointments.Columns.Contains("CustomerName"))
             {
@@ -571,7 +574,7 @@ namespace WindowsFormsApp1
                 {
                     var row = dgvAppointments.Rows[e.RowIndex];
 
-                    int appointmentId = Convert.ToInt32(row.Cells["AppointmentID"].Value);
+                    int appointmentId = Convert.ToInt32(row.Cells[0].Value);
                     string newComment = row.Cells["Comments"].Value?.ToString() ?? "";
                     int newRating = int.TryParse(row.Cells["Rating"].Value?.ToString(), out int val) ? val : 0;
 
@@ -584,6 +587,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Failed to update: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            appointmentTableAdapter1.Update(wstGrp14DataSet.Appointment);
         }
 
 
@@ -842,6 +846,9 @@ namespace WindowsFormsApp1
                     btnCancel.Enabled = true;
                     btnReschedule.Enabled = true;
                 }
+
+                txtCommentFeedback.Text = dgvAppointments.CurrentRow.Cells["Comments"].Value?.ToString();
+                numRatingFeedback.Value = int.TryParse(dgvAppointments.CurrentRow.Cells["Rating"].Value?.ToString(), out int val) ? val : 0;
             }
         }
 
@@ -1149,11 +1156,31 @@ namespace WindowsFormsApp1
             }
         }
 
-        
+        private void btnSaveFeedback_Click(object sender, EventArgs e)
+        {
+            if (dgvAppointments.CurrentRow != null)
+            {
+                try
+                {
+                    int appointmentId = Convert.ToInt32(dgvAppointments.CurrentRow.Cells["AppointmentID"].Value);
+                    string newComment = txtCommentFeedback.Text.Trim();
+                    int newRating = (int)numRatingFeedback.Value;
 
+                    appointmentTableAdapter1.UpdateCommentAndRating(newComment, newRating, appointmentId);
 
-
-
+                    LoadAppointments(); // Refresh the DataGridView
+                    MessageBox.Show("Feedback updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to update feedback: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an appointment first.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
 
