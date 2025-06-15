@@ -1355,6 +1355,54 @@ namespace WindowsFormsApp1
 
             }
         }
+
+        private void PhoneBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+        }
+
+        private void PNBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PNBox_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void PNBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+        }
+
+        private void NumberPhoneBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+
+        }
+
+        private void PhoneNumberBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+
+        }
     }
 }
 

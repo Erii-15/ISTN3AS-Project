@@ -40,10 +40,11 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl4 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.button10 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl5 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -275,7 +276,6 @@
             this.invoiceTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.InvoiceTableAdapter();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceItemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button13 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabInvoice.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -456,16 +456,14 @@
             this.tabPage7.Text = "Service";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // button13
             // 
-            this.button10.Location = new System.Drawing.Point(45, 405);
-            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(367, 64);
-            this.button10.TabIndex = 8;
-            this.button10.Text = "Add New Staff Service";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.button13.Location = new System.Drawing.Point(19, 205);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(360, 52);
+            this.button13.TabIndex = 16;
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // tabControl5
             // 
@@ -516,6 +514,17 @@
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(45, 405);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(367, 64);
+            this.button10.TabIndex = 8;
+            this.button10.Text = "Add New Staff Service";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // textBox4
             // 
             this.textBox4.Enabled = false;
@@ -541,6 +550,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(165, 30);
             this.textBox6.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.textBox6, "Can not be empty and can only contain numeric values");
             this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // textBox7
@@ -550,6 +560,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(256, 30);
             this.textBox7.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.textBox7, "Can not be empty and can only contain numeric values");
             this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
             // 
             // textBox8
@@ -559,6 +570,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(256, 30);
             this.textBox8.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.textBox8, "Can not be empty");
             // 
             // label32
             // 
@@ -650,6 +662,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(161, 33);
             this.comboBox1.TabIndex = 47;
+            this.toolTip1.SetToolTip(this.comboBox1, "Pick a service ID");
             this.comboBox1.ValueMember = "ServiceID";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -709,6 +722,7 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(161, 30);
             this.textBox10.TabIndex = 42;
+            this.toolTip1.SetToolTip(this.textBox10, "Can not be empty and can only contain numeric values");
             this.textBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox10_KeyPress);
             // 
             // textBox11
@@ -718,6 +732,7 @@
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(251, 30);
             this.textBox11.TabIndex = 41;
+            this.toolTip1.SetToolTip(this.textBox11, "Can not be empty and can only contain numeric values");
             this.textBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
             // 
             // textBox12
@@ -727,6 +742,7 @@
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(251, 30);
             this.textBox12.TabIndex = 40;
+            this.toolTip1.SetToolTip(this.textBox12, "Can not be empty");
             // 
             // label31
             // 
@@ -905,7 +921,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(437, 30);
             this.textBox2.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.textBox2, "Search by Name or Surname");
+            this.toolTip1.SetToolTip(this.textBox2, "Search by Name");
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label30
@@ -1085,9 +1101,9 @@
             this.groupBox2.Controls.Add(this.txtCommentFeedback);
             this.groupBox2.Controls.Add(this.btnSaveFeedback);
             this.groupBox2.Location = new System.Drawing.Point(28, 689);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(672, 172);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
@@ -1116,7 +1132,7 @@
             // numRatingFeedback
             // 
             this.numRatingFeedback.Location = new System.Drawing.Point(351, 54);
-            this.numRatingFeedback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numRatingFeedback.Margin = new System.Windows.Forms.Padding(4);
             this.numRatingFeedback.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1129,7 +1145,7 @@
             // txtCommentFeedback
             // 
             this.txtCommentFeedback.Location = new System.Drawing.Point(8, 53);
-            this.txtCommentFeedback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCommentFeedback.Margin = new System.Windows.Forms.Padding(4);
             this.txtCommentFeedback.Name = "txtCommentFeedback";
             this.txtCommentFeedback.Size = new System.Drawing.Size(281, 31);
             this.txtCommentFeedback.TabIndex = 26;
@@ -1137,7 +1153,7 @@
             // btnSaveFeedback
             // 
             this.btnSaveFeedback.Location = new System.Drawing.Point(39, 111);
-            this.btnSaveFeedback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSaveFeedback.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveFeedback.Name = "btnSaveFeedback";
             this.btnSaveFeedback.Size = new System.Drawing.Size(300, 46);
             this.btnSaveFeedback.TabIndex = 25;
@@ -1148,7 +1164,7 @@
             // txtTime
             // 
             this.txtTime.Location = new System.Drawing.Point(185, 70);
-            this.txtTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTime.Margin = new System.Windows.Forms.Padding(4);
             this.txtTime.Name = "txtTime";
             this.txtTime.Size = new System.Drawing.Size(243, 31);
             this.txtTime.TabIndex = 24;
@@ -1162,9 +1178,9 @@
             this.groupBox1.Controls.Add(this.dtpNewDate);
             this.groupBox1.Controls.Add(this.btnReschedule);
             this.groupBox1.Location = new System.Drawing.Point(891, 667);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(669, 194);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
@@ -1205,7 +1221,7 @@
             "",
             "\"14:30\""});
             this.cbNewTime.Location = new System.Drawing.Point(261, 100);
-            this.cbNewTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbNewTime.Margin = new System.Windows.Forms.Padding(4);
             this.cbNewTime.Name = "cbNewTime";
             this.cbNewTime.Size = new System.Drawing.Size(160, 32);
             this.cbNewTime.TabIndex = 11;
@@ -1213,7 +1229,7 @@
             // dtpNewDate
             // 
             this.dtpNewDate.Location = new System.Drawing.Point(243, 20);
-            this.dtpNewDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpNewDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpNewDate.Name = "dtpNewDate";
             this.dtpNewDate.Size = new System.Drawing.Size(404, 31);
             this.dtpNewDate.TabIndex = 10;
@@ -1221,7 +1237,7 @@
             // btnReschedule
             // 
             this.btnReschedule.Location = new System.Drawing.Point(480, 111);
-            this.btnReschedule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReschedule.Margin = new System.Windows.Forms.Padding(4);
             this.btnReschedule.Name = "btnReschedule";
             this.btnReschedule.Size = new System.Drawing.Size(168, 63);
             this.btnReschedule.TabIndex = 9;
@@ -1242,7 +1258,7 @@
             // txtSearchAppointment
             // 
             this.txtSearchAppointment.Location = new System.Drawing.Point(585, 316);
-            this.txtSearchAppointment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearchAppointment.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchAppointment.Name = "txtSearchAppointment";
             this.txtSearchAppointment.Size = new System.Drawing.Size(477, 31);
             this.txtSearchAppointment.TabIndex = 19;
@@ -1310,7 +1326,7 @@
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(1221, 246);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(333, 78);
             this.btnCancel.TabIndex = 8;
@@ -1336,7 +1352,7 @@
             this.durationDataGridViewTextBoxColumn1});
             this.dgvAppointments.DataSource = this.appointmentBindingSource;
             this.dgvAppointments.Location = new System.Drawing.Point(9, 423);
-            this.dgvAppointments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvAppointments.Margin = new System.Windows.Forms.Padding(4);
             this.dgvAppointments.Name = "dgvAppointments";
             this.dgvAppointments.RowHeadersWidth = 51;
             this.dgvAppointments.Size = new System.Drawing.Size(1547, 239);
@@ -1439,7 +1455,7 @@
             // btnBook
             // 
             this.btnBook.Location = new System.Drawing.Point(1221, 86);
-            this.btnBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBook.Margin = new System.Windows.Forms.Padding(4);
             this.btnBook.Name = "btnBook";
             this.btnBook.Size = new System.Drawing.Size(333, 78);
             this.btnBook.TabIndex = 6;
@@ -1450,7 +1466,7 @@
             // txtComments
             // 
             this.txtComments.Location = new System.Drawing.Point(847, 14);
-            this.txtComments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtComments.Margin = new System.Windows.Forms.Padding(4);
             this.txtComments.Name = "txtComments";
             this.txtComments.Size = new System.Drawing.Size(351, 31);
             this.txtComments.TabIndex = 5;
@@ -1470,7 +1486,7 @@
             "",
             "\"16:15\""});
             this.cbTime.Location = new System.Drawing.Point(452, 69);
-            this.cbTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTime.Margin = new System.Windows.Forms.Padding(4);
             this.cbTime.Name = "cbTime";
             this.cbTime.Size = new System.Drawing.Size(160, 32);
             this.cbTime.TabIndex = 4;
@@ -1478,7 +1494,7 @@
             // dtpDate
             // 
             this.dtpDate.Location = new System.Drawing.Point(145, 17);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(383, 31);
             this.dtpDate.TabIndex = 3;
@@ -1489,7 +1505,7 @@
             this.cbCustomers.DisplayMember = "FirstName";
             this.cbCustomers.FormattingEnabled = true;
             this.cbCustomers.Location = new System.Drawing.Point(268, 209);
-            this.cbCustomers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCustomers.Margin = new System.Windows.Forms.Padding(4);
             this.cbCustomers.Name = "cbCustomers";
             this.cbCustomers.Size = new System.Drawing.Size(160, 32);
             this.cbCustomers.TabIndex = 2;
@@ -1506,7 +1522,7 @@
             this.cbStaff.DisplayMember = "FirstName";
             this.cbStaff.FormattingEnabled = true;
             this.cbStaff.Location = new System.Drawing.Point(268, 140);
-            this.cbStaff.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbStaff.Margin = new System.Windows.Forms.Padding(4);
             this.cbStaff.Name = "cbStaff";
             this.cbStaff.Size = new System.Drawing.Size(160, 32);
             this.cbStaff.TabIndex = 1;
@@ -1523,7 +1539,7 @@
             this.cbServices.DisplayMember = "ServiceName";
             this.cbServices.FormattingEnabled = true;
             this.cbServices.Location = new System.Drawing.Point(847, 74);
-            this.cbServices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbServices.Margin = new System.Windows.Forms.Padding(4);
             this.cbServices.Name = "cbServices";
             this.cbServices.Size = new System.Drawing.Size(351, 32);
             this.cbServices.TabIndex = 0;
@@ -1585,7 +1601,7 @@
             this.dgvAppointmentHistory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvAppointmentHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAppointmentHistory.Location = new System.Drawing.Point(543, 244);
-            this.dgvAppointmentHistory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvAppointmentHistory.Margin = new System.Windows.Forms.Padding(4);
             this.dgvAppointmentHistory.Name = "dgvAppointmentHistory";
             this.dgvAppointmentHistory.RowHeadersWidth = 51;
             this.dgvAppointmentHistory.Size = new System.Drawing.Size(1008, 311);
@@ -1612,7 +1628,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(15, 196);
+            this.button7.Location = new System.Drawing.Point(19, 191);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(485, 68);
@@ -1625,7 +1641,7 @@
             // 
             this.tabControl3.Controls.Add(this.addCusttab);
             this.tabControl3.Controls.Add(this.updateCusttab);
-            this.tabControl3.Location = new System.Drawing.Point(19, 234);
+            this.tabControl3.Location = new System.Drawing.Point(19, 229);
             this.tabControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
@@ -1660,7 +1676,9 @@
             this.PhoneBox.Name = "PhoneBox";
             this.PhoneBox.Size = new System.Drawing.Size(217, 30);
             this.PhoneBox.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.PhoneBox, "Can not be empty and has to be 10 numeric characters");
             this.PhoneBox.TextChanged += new System.EventHandler(this.PhoneBox_TextChanged);
+            this.PhoneBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneBox_KeyPress);
             // 
             // EmailB
             // 
@@ -1669,6 +1687,7 @@
             this.EmailB.Name = "EmailB";
             this.EmailB.Size = new System.Drawing.Size(217, 30);
             this.EmailB.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.EmailB, "Can not be empty and has to be a valid gmail/outlook account");
             // 
             // LastNameBox
             // 
@@ -1677,6 +1696,7 @@
             this.LastNameBox.Name = "LastNameBox";
             this.LastNameBox.Size = new System.Drawing.Size(217, 30);
             this.LastNameBox.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.LastNameBox, "Can not be empty");
             // 
             // FirtsNameBox
             // 
@@ -1685,6 +1705,7 @@
             this.FirtsNameBox.Name = "FirtsNameBox";
             this.FirtsNameBox.Size = new System.Drawing.Size(217, 30);
             this.FirtsNameBox.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.FirtsNameBox, "Can not be empty");
             this.FirtsNameBox.TextChanged += new System.EventHandler(this.FirtsNameBox_TextChanged);
             // 
             // button8
@@ -1796,6 +1817,10 @@
             this.PNBox.Name = "PNBox";
             this.PNBox.Size = new System.Drawing.Size(235, 30);
             this.PNBox.TabIndex = 40;
+            this.toolTip1.SetToolTip(this.PNBox, "Can not be empty and has to be 10 numeric characters");
+            this.PNBox.TextChanged += new System.EventHandler(this.PNBox_TextChanged);
+            this.PNBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PNBox_KeyPress);
+            this.PNBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PNBox_KeyUp);
             // 
             // EmilBox
             // 
@@ -1804,6 +1829,7 @@
             this.EmilBox.Name = "EmilBox";
             this.EmilBox.Size = new System.Drawing.Size(235, 30);
             this.EmilBox.TabIndex = 39;
+            this.toolTip1.SetToolTip(this.EmilBox, "Can not be empty and has to be a valid gmail/outlook account");
             // 
             // LNBox
             // 
@@ -1812,6 +1838,7 @@
             this.LNBox.Name = "LNBox";
             this.LNBox.Size = new System.Drawing.Size(235, 30);
             this.LNBox.TabIndex = 38;
+            this.toolTip1.SetToolTip(this.LNBox, "Can not be empty");
             this.LNBox.TextChanged += new System.EventHandler(this.LNBox_TextChanged);
             // 
             // FNBox
@@ -1821,6 +1848,7 @@
             this.FNBox.Name = "FNBox";
             this.FNBox.Size = new System.Drawing.Size(235, 30);
             this.FNBox.TabIndex = 37;
+            this.toolTip1.SetToolTip(this.FNBox, "Can not be empty");
             // 
             // label18
             // 
@@ -2006,7 +2034,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(5, 209);
+            this.button6.Location = new System.Drawing.Point(13, 209);
             this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(399, 47);
@@ -2158,7 +2186,7 @@
             this.addStafftab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addStafftab.Name = "addStafftab";
             this.addStafftab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.addStafftab.Size = new System.Drawing.Size(437, 483);
+            this.addStafftab.Size = new System.Drawing.Size(409, 529);
             this.addStafftab.TabIndex = 0;
             this.addStafftab.Text = "tabPage6";
             this.addStafftab.UseVisualStyleBackColor = true;
@@ -2181,6 +2209,7 @@
             this.PassBox.Name = "PassBox";
             this.PassBox.Size = new System.Drawing.Size(181, 30);
             this.PassBox.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.PassBox, "Can not be empty");
             // 
             // RoleComboBox
             // 
@@ -2194,6 +2223,7 @@
             this.RoleComboBox.Name = "RoleComboBox";
             this.RoleComboBox.Size = new System.Drawing.Size(181, 33);
             this.RoleComboBox.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.RoleComboBox, "Select a valid role");
             // 
             // UserBox
             // 
@@ -2202,6 +2232,7 @@
             this.UserBox.Name = "UserBox";
             this.UserBox.Size = new System.Drawing.Size(181, 30);
             this.UserBox.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.UserBox, "Can not be empty");
             // 
             // NumberPhoneBox
             // 
@@ -2210,6 +2241,8 @@
             this.NumberPhoneBox.Name = "NumberPhoneBox";
             this.NumberPhoneBox.Size = new System.Drawing.Size(181, 30);
             this.NumberPhoneBox.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.NumberPhoneBox, "Can not be empty and has to be 10 numeric characters");
+            this.NumberPhoneBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberPhoneBox_KeyPress);
             // 
             // BoxEmail
             // 
@@ -2218,6 +2251,7 @@
             this.BoxEmail.Name = "BoxEmail";
             this.BoxEmail.Size = new System.Drawing.Size(181, 30);
             this.BoxEmail.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.BoxEmail, "Can not be empty and has to be a valid gmail/outlook account");
             // 
             // LastNmeBox
             // 
@@ -2226,6 +2260,7 @@
             this.LastNmeBox.Name = "LastNmeBox";
             this.LastNmeBox.Size = new System.Drawing.Size(181, 30);
             this.LastNmeBox.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.LastNmeBox, "Can not be empty");
             // 
             // NmeBox
             // 
@@ -2234,6 +2269,7 @@
             this.NmeBox.Name = "NmeBox";
             this.NmeBox.Size = new System.Drawing.Size(181, 30);
             this.NmeBox.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.NmeBox, "Can not be empty");
             // 
             // label8
             // 
@@ -2391,6 +2427,7 @@
             this.passWordBox.Name = "passWordBox";
             this.passWordBox.Size = new System.Drawing.Size(100, 30);
             this.passWordBox.TabIndex = 30;
+            this.toolTip1.SetToolTip(this.passWordBox, "Can not be empty");
             // 
             // rolecomboBox2
             // 
@@ -2404,6 +2441,7 @@
             this.rolecomboBox2.Name = "rolecomboBox2";
             this.rolecomboBox2.Size = new System.Drawing.Size(100, 33);
             this.rolecomboBox2.TabIndex = 29;
+            this.toolTip1.SetToolTip(this.rolecomboBox2, "Select valid role");
             // 
             // UserNameBox
             // 
@@ -2412,6 +2450,7 @@
             this.UserNameBox.Name = "UserNameBox";
             this.UserNameBox.Size = new System.Drawing.Size(100, 30);
             this.UserNameBox.TabIndex = 28;
+            this.toolTip1.SetToolTip(this.UserNameBox, "Can not be empty");
             // 
             // PhoneNumberBox
             // 
@@ -2420,6 +2459,8 @@
             this.PhoneNumberBox.Name = "PhoneNumberBox";
             this.PhoneNumberBox.Size = new System.Drawing.Size(100, 30);
             this.PhoneNumberBox.TabIndex = 27;
+            this.toolTip1.SetToolTip(this.PhoneNumberBox, "Can not be empty and has to be 10 numeric characters");
+            this.PhoneNumberBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumberBox_KeyPress);
             // 
             // EMAILBox
             // 
@@ -2428,6 +2469,7 @@
             this.EMAILBox.Name = "EMAILBox";
             this.EMAILBox.Size = new System.Drawing.Size(100, 30);
             this.EMAILBox.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.EMAILBox, "Can not be empty and has to be a valid gmail/outlook account");
             // 
             // LASTnBox
             // 
@@ -2436,6 +2478,7 @@
             this.LASTnBox.Name = "LASTnBox";
             this.LASTnBox.Size = new System.Drawing.Size(100, 30);
             this.LASTnBox.TabIndex = 25;
+            this.toolTip1.SetToolTip(this.LASTnBox, "Can not be empty");
             // 
             // nameBox
             // 
@@ -2444,6 +2487,7 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(100, 30);
             this.nameBox.TabIndex = 24;
+            this.toolTip1.SetToolTip(this.nameBox, "Can not be empty");
             // 
             // UpdateStaffbutton
             // 
@@ -2562,7 +2606,7 @@
             this.unitPriceDataGridViewTextBoxColumn});
             this.dgvInvoice.DataSource = this.invoiceItemBindingSource;
             this.dgvInvoice.Location = new System.Drawing.Point(61, 490);
-            this.dgvInvoice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvInvoice.Margin = new System.Windows.Forms.Padding(4);
             this.dgvInvoice.Name = "dgvInvoice";
             this.dgvInvoice.RowHeadersWidth = 51;
             this.dgvInvoice.Size = new System.Drawing.Size(903, 129);
@@ -2617,7 +2661,7 @@
             // SaveInvoice
             // 
             this.SaveInvoice.Location = new System.Drawing.Point(61, 358);
-            this.SaveInvoice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SaveInvoice.Margin = new System.Windows.Forms.Padding(4);
             this.SaveInvoice.Name = "SaveInvoice";
             this.SaveInvoice.Size = new System.Drawing.Size(161, 84);
             this.SaveInvoice.TabIndex = 5;
@@ -2638,7 +2682,7 @@
             // btnCalculateTotal
             // 
             this.btnCalculateTotal.Location = new System.Drawing.Point(61, 230);
-            this.btnCalculateTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCalculateTotal.Margin = new System.Windows.Forms.Padding(4);
             this.btnCalculateTotal.Name = "btnCalculateTotal";
             this.btnCalculateTotal.Size = new System.Drawing.Size(165, 96);
             this.btnCalculateTotal.TabIndex = 3;
@@ -2649,7 +2693,7 @@
             // txtDiscount
             // 
             this.txtDiscount.Location = new System.Drawing.Point(455, 222);
-            this.txtDiscount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(328, 30);
             this.txtDiscount.TabIndex = 2;
@@ -2676,7 +2720,7 @@
             this.colQuantity,
             this.colLineTotal});
             this.dgvCart.Location = new System.Drawing.Point(61, 57);
-            this.dgvCart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCart.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.Size = new System.Drawing.Size(769, 144);
@@ -2775,15 +2819,6 @@
             // 
             this.invoiceItemBindingSource1.DataMember = "InvoiceItem";
             this.invoiceItemBindingSource1.DataSource = this.wstGrp14DataSet;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(23, 207);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(360, 52);
-            this.button13.TabIndex = 16;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // Form2
             // 

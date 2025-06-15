@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{CFF2D4FB-FF44-4865-ACEF-9C094A24A73C}|WindowsFormsApp1.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFF2D4FB-FF44-4865-ACEF-9C094A24A73C}|WindowsFormsApp1.csproj|c:\\users\\erikn\\source\\repos\\erii-15\\istn3as-project\\istn3as m2 code\\istn3as second attemt\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{CFF2D4FB-FF44-4865-ACEF-9C094A24A73C}|WindowsFormsApp1.csproj|C:\\Users\\ErikN\\source\\repos\\Erii-15\\ISTN3AS-Project\\ISTN3AS M2 code\\ISTN3AS second attemt\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{CFF2D4FB-FF44-4865-ACEF-9C094A24A73C}|WindowsFormsApp1.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CFF2D4FB-FF44-4865-ACEF-9C094A24A73C}|WindowsFormsApp1.csproj|c:\\users\\erikn\\source\\repos\\erii-15\\istn3as-project\\istn3as m2 code\\istn3as second attemt\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{CFF2D4FB-FF44-4865-ACEF-9C094A24A73C}|WindowsFormsApp1.csproj|C:\\Users\\ErikN\\source\\repos\\Erii-15\\ISTN3AS-Project\\ISTN3AS M2 code\\ISTN3AS second attemt\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{CFF2D4FB-FF44-4865-ACEF-9C094A24A73C}|WindowsFormsApp1.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -22,12 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,7 +32,7 @@
               "RelativeDocumentMoniker": "Form2.cs",
               "ToolTip": "C:\\Users\\ErikN\\source\\repos\\Erii-15\\ISTN3AS-Project\\ISTN3AS M2 code\\ISTN3AS second attemt\\Form2.cs",
               "RelativeToolTip": "Form2.cs",
-              "ViewState": "AgIAAL8BAAAAAAAAAAAhwMUBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAL8BAAAAAAAAAAAhwMUBAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-15T11:21:16.312Z",
               "EditorCaption": ""
@@ -50,8 +46,7 @@
               "ToolTip": "C:\\Users\\ErikN\\source\\repos\\Erii-15\\ISTN3AS-Project\\ISTN3AS M2 code\\ISTN3AS second attemt\\Form2.cs [Design]",
               "RelativeToolTip": "Form2.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T11:19:35.338Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-06-15T11:19:35.338Z"
             },
             {
               "$type": "Document",
@@ -62,8 +57,7 @@
               "ToolTip": "C:\\Users\\ErikN\\source\\repos\\Erii-15\\ISTN3AS-Project\\ISTN3AS M2 code\\ISTN3AS second attemt\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T11:19:22.007Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-06-15T11:19:22.007Z"
             }
           ]
         }
