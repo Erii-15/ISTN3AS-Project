@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-
+using System.Windows.Forms;
 
 
 namespace WindowsFormsApp1
@@ -48,6 +48,15 @@ namespace WindowsFormsApp1
             {
                 button7.Text = "Add new Customer";
             }
+            if (tabControl5.SelectedTab == tabControl5.TabPages["Services"])
+            {
+                button13.Text = "Add new Service";
+            }
+            else
+            {
+                
+                button13.Text = "Update or Delete Service";
+            }
 
 
             //-----------------------------------------------
@@ -61,6 +70,40 @@ namespace WindowsFormsApp1
 
 
         }
+        // validation Functions  
+        public static bool IsNotEmpty(System.Windows.Forms.TextBox box)
+        {
+            bool result= !string.IsNullOrWhiteSpace(box.Text);
+            box.BackColor = result ? Color.White : Color.Red;
+            box.Refresh();
+            return result;
+            
+        }
+
+        public static bool IsValidEmail(System.Windows.Forms.TextBox box)
+        {
+            string email = box.Text.Trim().ToLower();
+            bool result= IsNotEmpty(box) && (email.EndsWith("@gmail.com") || email.EndsWith("@outlook.com"));
+            box.BackColor = result ? Color.White : Color.Red;
+            return result;
+        }
+
+        public static bool IsValidPhone(System.Windows.Forms.TextBox box)
+        {
+            string phone = box.Text.Trim();
+            bool result= IsNotEmpty(box) && phone.Length == 10 && phone.StartsWith("0") && phone.All(char.IsDigit);
+            box.BackColor = result ? Color.White : Color.Red;
+            return result;
+        }
+ 
+        public static bool IsComboBoxSelected(System.Windows.Forms.ComboBox combo)
+        {
+            bool result = combo.SelectedIndex >= 0;
+            combo.BackColor = result ? Color.White : Color.Red;
+            return result;
+        }
+        //End of Validation Functions
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -208,14 +251,7 @@ namespace WindowsFormsApp1
             string username = UserBox.Text;
             string password = PassBox.Text;
 
-            if (string.IsNullOrWhiteSpace(NmeBox.Text) || string.IsNullOrWhiteSpace(LastNmeBox.Text) || RoleComboBox.SelectedIndex == -1 ||
-                 string.IsNullOrWhiteSpace(BoxEmail.Text) || !(BoxEmail.Text.Contains("@gmail.com") || BoxEmail.Text.Contains("@outlook.com")) ||
-                 string.IsNullOrWhiteSpace(NumberPhoneBox.Text) || NumberPhoneBox.Text.Length != 10 || !NumberPhoneBox.Text.StartsWith("0") || !NumberPhoneBox.Text.All(char.IsDigit) ||
-                 string.IsNullOrWhiteSpace(UserBox.Text) || string.IsNullOrWhiteSpace(PassBox.Text))
-            {
-                MessageBox.Show("Please make sure you fill all fields correctly.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
+            if (IsComboBoxSelected(RoleComboBox) && IsNotEmpty(NmeBox) && IsNotEmpty(LastNmeBox)  && IsValidEmail(BoxEmail) && IsValidPhone(NumberPhoneBox) && IsNotEmpty(UserBox) && IsNotEmpty(PassBox))
             {
                 if (count > 0)
                 {
@@ -246,23 +282,10 @@ namespace WindowsFormsApp1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (IDcomboBox3.SelectedIndex == -1 ||
-      string.IsNullOrWhiteSpace(nameBox.Text) ||
-      string.IsNullOrWhiteSpace(LASTnBox.Text) ||
-      rolecomboBox2.SelectedIndex == -1 ||
-      string.IsNullOrWhiteSpace(EMAILBox.Text) ||
-      !(EMAILBox.Text.EndsWith("@gmail.com") || EMAILBox.Text.EndsWith("@outlook.com")) ||
-      string.IsNullOrWhiteSpace(PhoneNumberBox.Text) ||
-      PhoneNumberBox.Text.Length != 10 ||
-      !PhoneNumberBox.Text.StartsWith("0") ||
-      !PhoneNumberBox.Text.All(char.IsDigit) ||
-      string.IsNullOrWhiteSpace(UserNameBox.Text) ||
-      string.IsNullOrWhiteSpace(passWordBox.Text))
-            {
-                MessageBox.Show("Please make sure all fields are filled in correctly.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else
+           // int count = Convert.ToInt16(staffTableAdapter.UserNameExists(BoxEmail.Text.ToLower())); 
+            if (IsComboBoxSelected(IDcomboBox3) && IsComboBoxSelected(rolecomboBox2)&& IsNotEmpty(nameBox) && IsNotEmpty(LASTnBox) &&
+                   IsValidEmail(EMAILBox) && IsValidPhone(PhoneNumberBox) && IsNotEmpty(UserNameBox) && IsNotEmpty(passWordBox))
+
             {
                 if (!int.TryParse(IDcomboBox3.SelectedItem.ToString(), out int selectedId))
                 {
@@ -329,27 +352,21 @@ namespace WindowsFormsApp1
 
         private void button9_Click(object sender, EventArgs e)
         {
-
+            
             string firstName = FNBox.Text;
             string lastName = LNBox.Text;
             string email = EmilBox.Text.ToLower();
             string phoneNo = PNBox.Text;
+            //Validation
+            //bool ValComboBox = IsComboBoxSelected(IDComboBox);
+            //bool ValfirstName = IsNotEmpty(FNBox);
+            //bool ValLastName = IsNotEmpty(LNBox);
+            //bool ValEmail = IsValidEmail(EmilBox);
+            //bool ValPhone = IsValidPhone(PNBox);
 
-            if (IDComboBox.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(firstName) ||
-                string.IsNullOrWhiteSpace(lastName) ||
-                string.IsNullOrWhiteSpace(email) ||
-                !(email.EndsWith("@gmail.com") || email.EndsWith("@outlook.com")) ||
-                string.IsNullOrWhiteSpace(phoneNo) ||
-                phoneNo.Length != 10 ||
-                !phoneNo.StartsWith("0") ||
-                !phoneNo.All(char.IsDigit))
+            if (IsComboBoxSelected(IDComboBox) && IsNotEmpty(FNBox) && IsNotEmpty(LNBox) && IsValidEmail(EmilBox) && IsValidPhone(PNBox))
             {
-                MessageBox.Show("Please make sure all fields are filled in correctly.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else
-            {
+                
                 if (!int.TryParse(IDComboBox.SelectedItem.ToString(), out int selectedId))
                 {
                     MessageBox.Show("Invalid Customer ID selected.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -385,13 +402,7 @@ namespace WindowsFormsApp1
             string phoneNo = PhoneBox.Text;
 
 
-            if (string.IsNullOrWhiteSpace(FirtsNameBox.Text) || string.IsNullOrWhiteSpace(LastNameBox.Text) ||
-                 string.IsNullOrWhiteSpace(EmailB.Text) || !(EmailB.Text.Contains("@gmail.com") || EmailB.Text.Contains("@outlook.com")) ||
-                 string.IsNullOrWhiteSpace(PhoneBox.Text) || PhoneBox.Text.Length != 10 || !PhoneBox.Text.StartsWith("0") || !PhoneBox.Text.All(char.IsDigit))
-            {
-                MessageBox.Show("Please make sure you fill all fields correctly.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
+            if ( IsNotEmpty(FirtsNameBox) && IsNotEmpty(LastNameBox) && IsValidEmail(EmailB) && IsValidPhone(PhoneBox))
             {
                 customerTableAdapter.InsertCustomer(Firstname, lastName, email.ToLower(), phoneNo, true);
                 customerTableAdapter.Fill(wstGrp14DataSet.Customer);
@@ -440,6 +451,7 @@ namespace WindowsFormsApp1
 
         private void button7_Click_1(object sender, EventArgs e)
         {
+
             if (tabControl3.SelectedTab == tabControl3.TabPages["addCusttab"])
             {
                 button7.Text = "Add new Customer";
@@ -479,8 +491,26 @@ namespace WindowsFormsApp1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            serviceTableAdapter.InsertService(textBox8.Text, Convert.ToInt16(textBox7.Text), Convert.ToDecimal(textBox6.Text), textBox5.Text, true, checkBox3.Checked, Convert.ToDecimal(textBox4.Text));
-            dataGridView3.DataSource = wstGrp14DataSet.Service;
+            if (IsNotEmpty(textBox8) && IsNotEmpty(textBox7) && IsNotEmpty(textBox6) && IsNotEmpty(textBox5))
+            {
+                if (checkBox3.Checked)
+                {
+                    if (IsNotEmpty(textBox4))
+                    {
+                        serviceTableAdapter.InsertService(textBox8.Text, Convert.ToInt16(textBox7.Text), Convert.ToDecimal(textBox6.Text), textBox5.Text, true, checkBox3.Checked, Convert.ToDecimal(textBox4.Text));
+                        dataGridView3.DataSource = wstGrp14DataSet.Service;
+                    }
+
+                }
+                else
+                {
+                    serviceTableAdapter.InsertService(textBox8.Text, Convert.ToInt16(textBox7.Text), Convert.ToDecimal(textBox6.Text), textBox5.Text, true, checkBox3.Checked, Convert.ToDecimal(textBox4.Text));
+                    dataGridView3.DataSource = wstGrp14DataSet.Service;
+                }
+
+                    
+            }
+            
         }
 
         private void textBox15_TextChanged(object sender, EventArgs e)
@@ -505,9 +535,26 @@ namespace WindowsFormsApp1
 
         private void button12_Click(object sender, EventArgs e)
         {
-            serviceTableAdapter.UpdateService(textBox12.Text, Convert.ToInt16(textBox11.Text), Convert.ToDecimal(textBox10.Text), textBox9.Text, checkBox1.Checked, checkBox2.Checked, Convert.ToDecimal(textBox3.Text), Convert.ToInt16(comboBox1.SelectedValue));
-            dataGridView3.DataSource = wstGrp14DataSet.Service;
-            serviceTableAdapter.Fill(wstGrp14DataSet.Service);
+            if (IsComboBoxSelected(comboBox1)&&IsNotEmpty(textBox12)&&IsNotEmpty(textBox11)&&IsNotEmpty(textBox10))
+            {
+                if (checkBox2.Checked)
+                {
+                    if (IsNotEmpty(textBox3))
+                    {
+                        serviceTableAdapter.UpdateService(textBox12.Text, Convert.ToInt16(textBox11.Text), Convert.ToDecimal(textBox10.Text), textBox9.Text, checkBox1.Checked, checkBox2.Checked, Convert.ToDecimal(textBox3.Text), Convert.ToInt16(comboBox1.SelectedValue));
+                        dataGridView3.DataSource = wstGrp14DataSet.Service;
+                        serviceTableAdapter.Fill(wstGrp14DataSet.Service);
+                    }
+
+                }
+                else
+                {
+                    serviceTableAdapter.UpdateService(textBox12.Text, Convert.ToInt16(textBox11.Text), Convert.ToDecimal(textBox10.Text), textBox9.Text, checkBox1.Checked, checkBox2.Checked, Convert.ToDecimal(textBox3.Text), Convert.ToInt16(comboBox1.SelectedValue));
+                    dataGridView3.DataSource = wstGrp14DataSet.Service;
+                    serviceTableAdapter.Fill(wstGrp14DataSet.Service);
+                }
+            }
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1235,6 +1282,77 @@ namespace WindowsFormsApp1
                 // Fill appointment history grid
                 var historyData = appointmentTableAdapter1.GetHistoryByCustomerID(customerId);
                 dgvAppointmentHistory.DataSource = historyData;
+            }
+        }
+
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+        }
+
+        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+        }
+
+        private void textBox11_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+        }
+
+        private void textBox10_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //only allow integers
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore key press
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (tabControl5.SelectedTab == tabPage10)
+            {
+                
+                button13.Text = "Update or Delete Service";
+                tabControl5.SelectedTab = tabPage9;
+
+            }
+            else
+            {
+                button13.Text = "Add new Service";
+                tabControl5.SelectedTab = tabPage10;
+
             }
         }
     }
