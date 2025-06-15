@@ -261,6 +261,8 @@ namespace WindowsFormsApp1
                 {
                     staffTableAdapter.InsertStaff(name, lastName, selectRole, email.ToLower(), phoneNo, username, password, true);
                     staffTableAdapter.Fill(wstGrp14DataSet.Staff);
+                    MessageBox.Show("Staff: "+name+" was added successfully");
+                    ClearFields();
                 }
             }
 
@@ -297,6 +299,8 @@ namespace WindowsFormsApp1
                     PhoneNumberBox.Text, UserNameBox.Text, passWordBox.Text, ActiveCheckBox.Checked, selectedId);
 
                 staffTableAdapter.Fill(wstGrp14DataSet.Staff);
+                MessageBox.Show("Staff with ID:"+IDcomboBox3.SelectedItem.ToString()+" was updated successfully");
+                ClearFields();
 
             }
 
@@ -337,11 +341,50 @@ namespace WindowsFormsApp1
         {
             nameBox.Clear();
             LASTnBox.Clear();
+            rolecomboBox2.SelectedIndex = -1;
+            EMAILBox.Clear();
+            PhoneNumberBox.Clear();
+            UserNameBox.Clear();
+            passWordBox.Clear();
+            ActiveCheckBox.Checked = false;
+            IDcomboBox3.SelectedIndex = -1;
+            NmeBox.Clear();
+            RoleComboBox.SelectedIndex=-1;
+            LastNmeBox.Clear();
+            BoxEmail.Clear();
+            NumberPhoneBox.Clear();
+            UserBox.Clear();
+            PassBox.Clear();
+            checkBox1.Checked = false;
+            custCheck.Checked = false;
+            FNBox.Clear();
+            LNBox.Clear();
+            EmilBox.Clear();
+            PNBox.Clear();
+            IDComboBox.SelectedItem = -1;
+            FirtsNameBox.Clear();
+            LastNameBox.Clear();
+            EmailB.Clear();
+            PhoneBox.Clear();
+            nameBox.Clear();
+            LASTnBox.Clear();
             EMAILBox.Clear();
             PhoneNumberBox.Clear();
             UserNameBox.Clear();
             passWordBox.Clear();
             rolecomboBox2.SelectedIndex = -1;
+            textBox8.Clear();
+            textBox7.Clear();
+            textBox6.Clear();
+            textBox5.Clear();
+            checkBox3.Checked = false;
+            textBox4.Clear();
+            comboBox1.SelectedIndex = -1;
+            textBox12.Clear();
+            textBox11.Clear();
+            textBox10.Clear();
+            checkBox2.Checked = false;
+            textBox3.Clear();
         }
 
         private void FirtsNameBox_TextChanged(object sender, EventArgs e)
@@ -357,12 +400,7 @@ namespace WindowsFormsApp1
             string lastName = LNBox.Text;
             string email = EmilBox.Text.ToLower();
             string phoneNo = PNBox.Text;
-            //Validation
-            //bool ValComboBox = IsComboBoxSelected(IDComboBox);
-            //bool ValfirstName = IsNotEmpty(FNBox);
-            //bool ValLastName = IsNotEmpty(LNBox);
-            //bool ValEmail = IsValidEmail(EmilBox);
-            //bool ValPhone = IsValidPhone(PNBox);
+            
 
             if (IsComboBoxSelected(IDComboBox) && IsNotEmpty(FNBox) && IsNotEmpty(LNBox) && IsValidEmail(EmilBox) && IsValidPhone(PNBox))
             {
@@ -374,6 +412,8 @@ namespace WindowsFormsApp1
                 }
                 customerTableAdapter.UpdateCustomer(firstName, lastName, email, phoneNo, custCheck.Checked, selectedId);
                 customerTableAdapter.Fill(wstGrp14DataSet.Customer);
+                MessageBox.Show("Customer was ID: "+ selectedId+" was updated successfully");
+                ClearFields();
             }
         }
 
@@ -406,6 +446,8 @@ namespace WindowsFormsApp1
             {
                 customerTableAdapter.InsertCustomer(Firstname, lastName, email.ToLower(), phoneNo, true);
                 customerTableAdapter.Fill(wstGrp14DataSet.Customer);
+                MessageBox.Show("Customer: "+Firstname+" was added successfully");
+                ClearFields();
 
             }
         }
@@ -434,6 +476,8 @@ namespace WindowsFormsApp1
 
             staffTableAdapter.DeleteStaff(selectedId);
             staffTableAdapter.Fill(wstGrp14DataSet.Staff);
+            MessageBox.Show("Staff with ID:" + IDcomboBox3.SelectedItem.ToString() + " was deleted successfully");
+            ClearFields();
 
         }
 
@@ -447,6 +491,8 @@ namespace WindowsFormsApp1
 
             customerTableAdapter.DeleteCustomer(selectedId);
             customerTableAdapter.Fill(wstGrp14DataSet.Customer);
+            MessageBox.Show("Customer was ID: " + selectedId + " was deleted successfully");
+            ClearFields();
         }
 
         private void button7_Click_1(object sender, EventArgs e)
@@ -499,6 +545,9 @@ namespace WindowsFormsApp1
                     {
                         serviceTableAdapter.InsertService(textBox8.Text, Convert.ToInt16(textBox7.Text), Convert.ToDecimal(textBox6.Text), textBox5.Text, true, checkBox3.Checked, Convert.ToDecimal(textBox4.Text));
                         dataGridView3.DataSource = wstGrp14DataSet.Service;
+                        
+                        MessageBox.Show("Service: "+ textBox8.Text+" was added successfully");
+                        ClearFields();
                     }
 
                 }
@@ -506,6 +555,8 @@ namespace WindowsFormsApp1
                 {
                     serviceTableAdapter.InsertService(textBox8.Text, Convert.ToInt16(textBox7.Text), Convert.ToDecimal(textBox6.Text), textBox5.Text, true, checkBox3.Checked, Convert.ToDecimal(textBox4.Text));
                     dataGridView3.DataSource = wstGrp14DataSet.Service;
+                    MessageBox.Show("Service: " + textBox8.Text + " was added successfully");
+                    ClearFields();
                 }
 
                     
@@ -544,6 +595,8 @@ namespace WindowsFormsApp1
                         serviceTableAdapter.UpdateService(textBox12.Text, Convert.ToInt16(textBox11.Text), Convert.ToDecimal(textBox10.Text), textBox9.Text, checkBox1.Checked, checkBox2.Checked, Convert.ToDecimal(textBox3.Text), Convert.ToInt16(comboBox1.SelectedValue));
                         dataGridView3.DataSource = wstGrp14DataSet.Service;
                         serviceTableAdapter.Fill(wstGrp14DataSet.Service);
+                        MessageBox.Show("Service with ID: "+ Convert.ToInt16(comboBox1.SelectedValue)+" was updated successfully");
+                        ClearFields();
                     }
 
                 }
@@ -552,6 +605,9 @@ namespace WindowsFormsApp1
                     serviceTableAdapter.UpdateService(textBox12.Text, Convert.ToInt16(textBox11.Text), Convert.ToDecimal(textBox10.Text), textBox9.Text, checkBox1.Checked, checkBox2.Checked, Convert.ToDecimal(textBox3.Text), Convert.ToInt16(comboBox1.SelectedValue));
                     dataGridView3.DataSource = wstGrp14DataSet.Service;
                     serviceTableAdapter.Fill(wstGrp14DataSet.Service);
+                    MessageBox.Show("Service with ID: " + Convert.ToInt16(comboBox1.SelectedValue) + " was updated successfully");
+                    ClearFields();
+
                 }
             }
             
@@ -598,6 +654,8 @@ namespace WindowsFormsApp1
         {
             serviceTableAdapter.DeleteService(Convert.ToInt16(comboBox1.SelectedValue));
             dataGridView3.DataSource = wstGrp14DataSet.Service;
+            MessageBox.Show("Service with ID: " + Convert.ToInt16(comboBox1.SelectedValue) + " was deleted successfully");
+            ClearFields();
         }
 
 
@@ -1414,6 +1472,11 @@ namespace WindowsFormsApp1
             Form1 f1 = new Form1();
             f1.Show();
             this.Hide();
+        }
+
+        private void tabPage9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
