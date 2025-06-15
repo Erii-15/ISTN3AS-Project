@@ -81,9 +81,7 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int count = Convert.ToInt16( staffTableAdapter.EmailExists(EmailBox.Text.ToLower().Trim()));
-            if (count > 0)
-            {
+            
                 String Password, from, messagebody;
                 Random rand = new Random();
                 randomcode = (rand.Next(99999)).ToString().ToLower();
@@ -110,11 +108,8 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show(Ex.ToString());
                 }
-            }
-            else
-            {
-                MessageBox.Show("Email does not exist");
-            }
+            
+            
             
         }
 
@@ -143,7 +138,8 @@ namespace WindowsFormsApp1
 
         private void VerifyPassbutton_Click(object sender, EventArgs e)
         {
-            int count = Convert.ToInt16(staffTableAdapter.UserNameExists(EnterUsernameBox.Text));
+            int count = Convert.ToInt16(staffTableAdapter.EmailExists(to, EnterUsernameBox.Text));
+            
             if (count > 0)
             {
 
@@ -163,6 +159,16 @@ namespace WindowsFormsApp1
             }
 
 
+        }
+
+        private void X_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPage1;
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPage1;
         }
     }
 }

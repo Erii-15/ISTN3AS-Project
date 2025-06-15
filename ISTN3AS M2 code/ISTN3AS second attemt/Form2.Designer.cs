@@ -30,12 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.tabInvoice = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl4 = new System.Windows.Forms.TabControl();
@@ -43,6 +37,9 @@
             this.button13 = new System.Windows.Forms.Button();
             this.tabControl5 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button10 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -57,6 +54,9 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.serviceBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.wstGrp14DataSet = new WindowsFormsApp1.WstGrp14DataSet();
@@ -262,6 +262,10 @@
             this.serviceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
@@ -276,7 +280,11 @@
             this.invoiceTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.InvoiceTableAdapter();
             this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.invoiceItemBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabInvoice.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl4.SuspendLayout();
@@ -323,81 +331,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(75, 917);
-            this.panel1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Image = global::WindowsFormsApp1.Properties.Resources.serviceandproducts;
-            this.button1.Location = new System.Drawing.Point(0, 71);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 71);
-            this.button1.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.button1, "Products and Services");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Image = global::WindowsFormsApp1.Properties.Resources.Appointment;
-            this.button2.Location = new System.Drawing.Point(3, 185);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 64);
-            this.button2.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.button2, "Appointments");
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Image = global::WindowsFormsApp1.Properties.Resources.customer;
-            this.button3.Location = new System.Drawing.Point(3, 294);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(69, 68);
-            this.button3.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.button3, "Customers");
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Image = global::WindowsFormsApp1.Properties.Resources.staff;
-            this.button4.Location = new System.Drawing.Point(3, 427);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(67, 65);
-            this.button4.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.button4, "Staff");
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Image = global::WindowsFormsApp1.Properties.Resources.report;
-            this.button5.Location = new System.Drawing.Point(0, 565);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(67, 50);
-            this.button5.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.button5, "Report");
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // tabInvoice
             // 
@@ -407,13 +342,14 @@
             this.tabInvoice.Controls.Add(this.tabPage4);
             this.tabInvoice.Controls.Add(this.tabPage5);
             this.tabInvoice.Controls.Add(this.tabPage6);
+            this.tabInvoice.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabInvoice.Location = new System.Drawing.Point(75, 0);
+            this.tabInvoice.Location = new System.Drawing.Point(80, 0);
             this.tabInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabInvoice.Name = "tabInvoice";
             this.tabInvoice.SelectedIndex = 0;
-            this.tabInvoice.Size = new System.Drawing.Size(1589, 917);
+            this.tabInvoice.Size = new System.Drawing.Size(1584, 917);
             this.tabInvoice.TabIndex = 1;
             // 
             // tabPage1
@@ -423,7 +359,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1581, 879);
+            this.tabPage1.Size = new System.Drawing.Size(1576, 879);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "SERVICES";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -437,11 +373,12 @@
             this.tabControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(1575, 875);
+            this.tabControl4.Size = new System.Drawing.Size(1570, 875);
             this.tabControl4.TabIndex = 0;
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.label64);
             this.tabPage7.Controls.Add(this.button13);
             this.tabPage7.Controls.Add(this.tabControl5);
             this.tabPage7.Controls.Add(this.dataGridView3);
@@ -451,14 +388,14 @@
             this.tabPage7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage7.Size = new System.Drawing.Size(1567, 837);
+            this.tabPage7.Size = new System.Drawing.Size(1562, 837);
             this.tabPage7.TabIndex = 0;
             this.tabPage7.Text = "Service";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(19, 205);
+            this.button13.Location = new System.Drawing.Point(27, 207);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(360, 52);
             this.button13.TabIndex = 16;
@@ -479,6 +416,9 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.label60);
+            this.tabPage9.Controls.Add(this.label59);
+            this.tabPage9.Controls.Add(this.label58);
             this.tabPage9.Controls.Add(this.checkBox3);
             this.tabPage9.Controls.Add(this.button10);
             this.tabPage9.Controls.Add(this.textBox4);
@@ -502,6 +442,33 @@
             this.tabPage9.Text = "Services";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(186, 288);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(25, 25);
+            this.label60.TabIndex = 18;
+            this.label60.Text = "R";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(186, 129);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(25, 25);
+            this.label59.TabIndex = 17;
+            this.label59.Text = "R";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(418, 78);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(43, 25);
+            this.label58.TabIndex = 16;
+            this.label58.Text = "min";
+            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
@@ -511,6 +478,7 @@
             this.checkBox3.Size = new System.Drawing.Size(122, 29);
             this.checkBox3.TabIndex = 15;
             this.checkBox3.Text = "Promotion";
+            this.toolTip1.SetToolTip(this.checkBox3, "Applicable to products on sale");
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
@@ -558,7 +526,7 @@
             this.textBox7.Location = new System.Drawing.Point(217, 73);
             this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(256, 30);
+            this.textBox7.Size = new System.Drawing.Size(195, 30);
             this.textBox7.TabIndex = 10;
             this.toolTip1.SetToolTip(this.textBox7, "Can not be empty and can only contain numeric values");
             this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
@@ -627,6 +595,9 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.label63);
+            this.tabPage10.Controls.Add(this.label62);
+            this.tabPage10.Controls.Add(this.label61);
             this.tabPage10.Controls.Add(this.comboBox1);
             this.tabPage10.Controls.Add(this.label43);
             this.tabPage10.Controls.Add(this.checkBox2);
@@ -651,6 +622,33 @@
             this.tabPage10.TabIndex = 1;
             this.tabPage10.Text = "Staff";
             this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(412, 95);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(43, 25);
+            this.label63.TabIndex = 50;
+            this.label63.Text = "min";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(192, 154);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(25, 25);
+            this.label62.TabIndex = 49;
+            this.label62.Text = "R";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(192, 313);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(25, 25);
+            this.label61.TabIndex = 48;
+            this.label61.Text = "R";
             // 
             // comboBox1
             // 
@@ -694,6 +692,7 @@
             this.checkBox2.Size = new System.Drawing.Size(122, 29);
             this.checkBox2.TabIndex = 45;
             this.checkBox2.Text = "Promotion";
+            this.toolTip1.SetToolTip(this.checkBox2, "Applicable to products on sale");
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
@@ -730,7 +729,7 @@
             this.textBox11.Location = new System.Drawing.Point(223, 92);
             this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(251, 30);
+            this.textBox11.Size = new System.Drawing.Size(183, 30);
             this.textBox11.TabIndex = 41;
             this.toolTip1.SetToolTip(this.textBox11, "Can not be empty and can only contain numeric values");
             this.textBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
@@ -809,6 +808,7 @@
             this.checkBox1.Size = new System.Drawing.Size(88, 29);
             this.checkBox1.TabIndex = 33;
             this.checkBox1.Text = "Active";
+            this.toolTip1.SetToolTip(this.checkBox1, "If service is avaliable to customers");
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -945,7 +945,7 @@
             this.tabPage8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage8.Size = new System.Drawing.Size(1567, 837);
+            this.tabPage8.Size = new System.Drawing.Size(1562, 837);
             this.tabPage8.TabIndex = 1;
             this.tabPage8.Text = "Product";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1089,7 +1089,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1581, 879);
+            this.tabPage2.Size = new System.Drawing.Size(1576, 879);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "APPOINTMENTS";
             // 
@@ -1547,6 +1547,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label65);
             this.tabPage3.Controls.Add(this.label57);
             this.tabPage3.Controls.Add(this.label56);
             this.tabPage3.Controls.Add(this.lblCustomerHeader);
@@ -1560,7 +1561,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(1581, 879);
+            this.tabPage3.Size = new System.Drawing.Size(1576, 879);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "CUSTOMER";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1628,7 +1629,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(19, 191);
+            this.button7.Location = new System.Drawing.Point(15, 191);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(485, 68);
@@ -1808,6 +1809,7 @@
             this.custCheck.Size = new System.Drawing.Size(88, 29);
             this.custCheck.TabIndex = 41;
             this.custCheck.Text = "Active";
+            this.toolTip1.SetToolTip(this.custCheck, "If account is in use");
             this.custCheck.UseVisualStyleBackColor = true;
             // 
             // PNBox
@@ -2007,7 +2009,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage4.Size = new System.Drawing.Size(1581, 879);
+            this.tabPage4.Size = new System.Drawing.Size(1576, 879);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "STAFF";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -2034,10 +2036,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(13, 209);
+            this.button6.Location = new System.Drawing.Point(6, 210);
             this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(399, 47);
+            this.button6.Size = new System.Drawing.Size(405, 47);
             this.button6.TabIndex = 3;
             this.button6.Text = "button6";
             this.button6.UseVisualStyleBackColor = true;
@@ -2048,9 +2050,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(27, 15);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(113, 25);
+            this.label9.Size = new System.Drawing.Size(135, 25);
             this.label9.TabIndex = 2;
-            this.label9.Text = "Staff Table:";
+            this.label9.Text = "Staff Records:";
             // 
             // dataGridView1
             // 
@@ -2396,6 +2398,7 @@
             this.ActiveCheckBox.Size = new System.Drawing.Size(88, 29);
             this.ActiveCheckBox.TabIndex = 33;
             this.ActiveCheckBox.Text = "Active";
+            this.toolTip1.SetToolTip(this.ActiveCheckBox, "If account is in use");
             this.ActiveCheckBox.UseVisualStyleBackColor = true;
             // 
             // IDcomboBox3
@@ -2569,7 +2572,7 @@
             this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage5.Size = new System.Drawing.Size(1581, 879);
+            this.tabPage5.Size = new System.Drawing.Size(1576, 879);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "REPORTS";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2587,7 +2590,7 @@
             this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage6.Size = new System.Drawing.Size(1581, 879);
+            this.tabPage6.Size = new System.Drawing.Size(1576, 879);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "INVOICE";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2758,6 +2761,54 @@
             this.colLineTotal.ReadOnly = true;
             this.colLineTotal.Width = 127;
             // 
+            // button5
+            // 
+            this.button5.Image = global::WindowsFormsApp1.Properties.Resources.report;
+            this.button5.Location = new System.Drawing.Point(0, 565);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(67, 50);
+            this.button5.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.button5, "Report");
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Image = global::WindowsFormsApp1.Properties.Resources.staff;
+            this.button4.Location = new System.Drawing.Point(3, 427);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(67, 65);
+            this.button4.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.button4, "Staff");
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Image = global::WindowsFormsApp1.Properties.Resources.customer;
+            this.button3.Location = new System.Drawing.Point(3, 294);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(69, 68);
+            this.button3.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.button3, "Customers");
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Image = global::WindowsFormsApp1.Properties.Resources.Appointment;
+            this.button2.Location = new System.Drawing.Point(3, 185);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(67, 64);
+            this.button2.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.button2, "Appointments");
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -2820,6 +2871,62 @@
             this.invoiceItemBindingSource1.DataMember = "InvoiceItem";
             this.invoiceItemBindingSource1.DataSource = this.wstGrp14DataSet;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button14);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(80, 917);
+            this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(6, 658);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(75, 29);
+            this.button14.TabIndex = 6;
+            this.button14.Text = "Logout";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(22, 21);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(179, 25);
+            this.label64.TabIndex = 17;
+            this.label64.Text = "Service Catalogue:";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(29, 19);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(180, 25);
+            this.label65.TabIndex = 9;
+            this.label65.Text = "Customer Records:";
+            // 
+            // button1
+            // 
+            this.button1.Image = global::WindowsFormsApp1.Properties.Resources.serviceandproducts;
+            this.button1.Location = new System.Drawing.Point(0, 71);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 71);
+            this.button1.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.button1, "Products and Services");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2831,7 +2938,6 @@
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
-            this.panel1.ResumeLayout(false);
             this.tabInvoice.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabControl4.ResumeLayout(false);
@@ -2892,18 +2998,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TabControl tabInvoice;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -3144,5 +3244,20 @@
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Button button1;
     }
 }
