@@ -8539,10 +8539,9 @@ WHERE        (Appointment.CustomerID = @CustomerID)";
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Sale] ([SaleID], [CustomerID], [SalePrice], [SaleDate]) VALUES" +
-                " (@SaleID, @CustomerID, @SalePrice, @SaleDate)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Sale] ([CustomerID], [SalePrice], [SaleDate]) VALUES (@CustomerID, @" +
+                "SalePrice, @SaleDate)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SaleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SaleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalePrice", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "SalePrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SaleDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SaleDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8561,19 +8560,19 @@ WHERE        (Appointment.CustomerID = @CustomerID)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SaleID, CustomerID, SalePrice, SaleDate FROM dbo.Sale";
+            this._commandCollection[0].CommandText = "SELECT        SaleID, CustomerID, SalePrice, SaleDate\r\nFROM            Sale\r\nORDE" +
+                "R BY SaleID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        SaleID, CustomerID, SalePrice, SaleDate\r\nFROM            Sale\r\nWHER" +
-                "E        (CustomerID = @CustomerID)";
+            this._commandCollection[1].CommandText = "SELECT CustomerID, SaleDate, SaleID, SalePrice FROM Sale WHERE (CustomerID = @Cus" +
+                "tomerID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO Sale\r\n                         (CustomerID, SalePrice, SaleDate)\r\nVAL" +
-                "UES        (@CustomerID,@SalePrice,@SaleDate); \r\nSELECT CAST(SCOPE_IDENTITY() AS" +
-                " INT); \r\n";
+            this._commandCollection[2].CommandText = "\r\n\r\n\r\nINSERT INTO Sale (CustomerID, SalePrice, SaleDate)\r\nVALUES (@CustomerID, @S" +
+                "alePrice, @SaleDate);\r\nSELECT SCOPE_IDENTITY();";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalePrice", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 10, 2, "SalePrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8673,25 +8672,24 @@ WHERE        (Appointment.CustomerID = @CustomerID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int SaleID, global::System.Nullable<int> CustomerID, global::System.Nullable<decimal> SalePrice, global::System.Nullable<global::System.DateTime> SaleDate) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(SaleID));
+        public virtual int Insert(global::System.Nullable<int> CustomerID, global::System.Nullable<decimal> SalePrice, global::System.Nullable<global::System.DateTime> SaleDate) {
             if ((CustomerID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(CustomerID.Value));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CustomerID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((SalePrice.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(SalePrice.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((SalePrice.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(SalePrice.Value));
+            if ((SaleDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(SaleDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((SaleDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(SaleDate.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

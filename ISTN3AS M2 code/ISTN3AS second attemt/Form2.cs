@@ -692,7 +692,7 @@ namespace WindowsFormsApp1
             this.appointmentTableAdapter1.Fill(this.wstGrp14DataSet.Appointment);
             dgvAppointments.DataSource = wstGrp14DataSet.Appointment;
 
-            var data = appointmentTableAdapter1.GetData(); // Or your query
+            var data = appointmentTableAdapter1.GetData(); 
             appointmentBindingSource.DataSource = data;
             dgvAppointments.DataSource = appointmentBindingSource;
 
@@ -813,7 +813,7 @@ namespace WindowsFormsApp1
                     return;
                 }
 
-               // Insert + Get AppointmentID
+               // Insert and Get AppointmentID
                 object newIdObj = appointmentTableAdapter1.InsertAppointmentReturnID(
                     customerId, staffId, appointmentDate, appointmentTime, status, comments, rating, duration
                 );
@@ -1185,61 +1185,7 @@ namespace WindowsFormsApp1
         }
 
 
-        /*
-
-        private void SaveInvoiceToDatabase()
-        {
-            decimal total = 0;
-            decimal.TryParse(lblTotal.Text.Replace("Total: R", "").Trim(), out total);
-            decimal discount = 0;
-            decimal.TryParse(txtDiscount.Text, out discount);
-
-            //Insert Invoice and get generated InvoiceID
-            int customerId = Convert.ToInt32(cbCustomers.SelectedValue);
-            int invoiceId = Convert.ToInt32(invoiceTableAdapter1.InsertThis(customerId, DateTime.Now, total, discount));
-
-            // Insert each item
-            foreach (DataGridViewRow row in dgvCart.Rows)
-            {
-                if (row.IsNewRow) continue;
-
-                string productName = row.Cells["colProductName"].Value?.ToString();
-                var productRow = wstGrp14DataSet.Product.FirstOrDefault(prod => prod.Name == productName);
-
-                int productId = productRow?.ProductID ?? 0;
-
-                if (productId == 0)
-                {
-                    MessageBox.Show($"Invalid product: {productName}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    continue;
-                }
-
-
-                int quantity = int.TryParse(row.Cells["colQuantity"].Value?.ToString(), out int q) ? q : 0;
-                decimal price = decimal.TryParse(row.Cells["colPrice"].Value?.ToString(), out decimal p) ? p : 0;
-
-                invoiceItemTableAdapter.Insert(invoiceId, productId, quantity, price);
-
-            }
-
-            MessageBox.Show("Invoice saved successfully!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            foreach (DataGridViewRow row in dgvCart.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    row.Cells["colQuantity"].Value = null;
-                    row.Cells["colLineTotal"].Value = null;
-                }
-            }
-
-            lblTotal.Text = "Total: R 0.00";
-            txtDiscount.Text = "";
-
-
-        }
-
-
-        */
+       
 
 
 
@@ -1271,7 +1217,7 @@ namespace WindowsFormsApp1
                     return;
                 }
 
-                // Loop and insert SaleItems
+                
                 foreach (DataGridViewRow row in dgvCart.Rows)
                 {
                     if (row.IsNewRow) continue;
@@ -1296,7 +1242,18 @@ namespace WindowsFormsApp1
                     int productId = Convert.ToInt32(productIdObj);
 
                     // Insert into SaleItem table
-                    saleItemTableAdapter1.InsertSaleItem(saleId, productId, quantity, price);
+
+                    // saleItemTableAdapter1.InsertSaleItem(saleId, productId, quantity, price);
+                    try
+                    {
+                        int rows = saleItemTableAdapter1.InsertSaleItem(saleId, productId, quantity, price);
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Insert failed: " + ex.Message);
+                    }
+
                 }
 
                 MessageBox.Show("Sale saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1315,7 +1272,7 @@ namespace WindowsFormsApp1
 
                 lblTotal.Text = "Total: R0.00";
                 txtDiscount.Text = "";
-                LoadSales(); // Reload to reflect the new sale
+                LoadSales(); // Reload to show the new sales
             }
             catch (Exception ex)
             {
@@ -1328,7 +1285,7 @@ namespace WindowsFormsApp1
             
             try
             {
-                // Load from SaleTableAdapter into your DataGridView
+                
                 dgvSale.DataSource = saleTableAdapter1.GetData();
             }
             catch (Exception ex)
@@ -1461,6 +1418,10 @@ namespace WindowsFormsApp1
             {
                 dgvAppointmentHistory.Columns["Duration"].Visible = false;
             }
+            if (dgvAppointmentHistory.Columns["ServiceName"] != null)
+            {
+                dgvAppointmentHistory.Columns["ServiceName"].Visible = false;
+            }
         }
 
        
@@ -1471,13 +1432,13 @@ namespace WindowsFormsApp1
             {
                 // Get selected customer info
                 var row = dataGridView2.Rows[e.RowIndex];
-                int customerId = Convert.ToInt32(row.Cells["customerIDDataGridViewTextBoxColumn"].Value); // or use index
-                string customerName = row.Cells["firstNameDataGridViewTextBoxColumn"].Value?.ToString(); // adjust column name
+                int customerId = Convert.ToInt32(row.Cells["customerIDDataGridViewTextBoxColumn"].Value); 
+                string customerName = row.Cells["firstNameDataGridViewTextBoxColumn"].Value?.ToString(); 
 
-                // Set header label
+               
                 lblCustomerHeader.Text = $"{customerName} ({customerId})";
 
-                // Fill appointment history grid
+                
                 var historyData = appointmentTableAdapter1.GetHistoryByCustomerID(customerId);
                 dgvAppointmentHistory.DataSource = historyData;
             }
@@ -1498,19 +1459,19 @@ namespace WindowsFormsApp1
                 int customerId = Convert.ToInt32(row.Cells["customerIDDataGridViewTextBoxColumn"].Value);
                 string customerName = row.Cells["firstNameDataGridViewTextBoxColumn"].Value?.ToString() ?? "";
 
-                // Update the label above the history grid
+                
                 lblCustomerInvoice.Text = $"Appointments for: {customerName} (ID: {customerId})";
 
-                // Load appointments from your custom query
+                
                 var appointments = appointmentTableAdapter1.GetAppointmentsWithServiceByCustomerID(customerId);
                 dgvCustomerAppointments.DataSource = appointments;
 
 
 
-                // Bind the data
+               
                 dgvCustomerAppointments.DataSource = appointmentTableAdapter1.GetAppointmentsWithServiceByCustomerID(customerId);
 
-                // Hide unwanted columns
+                
                 if (dgvCustomerAppointments.Columns.Contains("CustomerID"))
                     dgvCustomerAppointments.Columns["CustomerID"].Visible = false;
 
@@ -1548,7 +1509,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                var salesData = saleTableAdapter1.GetDataByCustomerID(customerId); // You may need to create this query
+                var salesData = saleTableAdapter1.GetDataByCustomerID(customerId); 
                 dgvSalesHistory.DataSource = salesData;
             }
             catch (Exception ex)

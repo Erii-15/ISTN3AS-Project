@@ -248,6 +248,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label70 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
             this.Sales = new System.Windows.Forms.GroupBox();
             this.dgvSale = new System.Windows.Forms.DataGridView();
@@ -300,7 +301,6 @@
             this.saleItemTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.SaleItemTableAdapter();
             this.serviceItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.serviceItemTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.ServiceItemTableAdapter();
-            this.label70 = new System.Windows.Forms.Label();
             this.tabInvoice.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl4.SuspendLayout();
@@ -2721,6 +2721,18 @@
             this.tabPage6.Text = "INVOICE";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.BackColor = System.Drawing.Color.Ivory;
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.Location = new System.Drawing.Point(20, 68);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(613, 18);
+            this.label70.TabIndex = 13;
+            this.label70.Text = "Please pick the quantity that is desire next to the product that is being purchas" +
+    "ed";
+            // 
             // label69
             // 
             this.label69.AutoSize = true;
@@ -3109,17 +3121,6 @@
             // serviceItemTableAdapter1
             // 
             this.serviceItemTableAdapter1.ClearBeforeFill = true;
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.BackColor = System.Drawing.Color.Ivory;
-            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.Location = new System.Drawing.Point(31, 68);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(594, 18);
-            this.label70.TabIndex = 13;
-            this.label70.Text = "Please pick the quantity you desire next to the product that is being purchased";
             // 
             // Form2
             // 
