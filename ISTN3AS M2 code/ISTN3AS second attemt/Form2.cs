@@ -148,7 +148,7 @@ namespace WindowsFormsApp1
 
             //Load appointments into DataGridView
             LoadAppointments();
-
+            LoadSales();
 
 
 
@@ -192,7 +192,7 @@ namespace WindowsFormsApp1
 
 
             LoadCart();
-            LoadInvoices();
+           
 
             
 
@@ -1198,13 +1198,84 @@ namespace WindowsFormsApp1
 
         private void SaveInvoice_Click(object sender, EventArgs e)
         {
-            SaveInvoiceToDatabase();
-            LoadInvoices();
+            //SaveInvoiceToDatabase();
+            //LoadInvoices();
+
+            try
+            {
+                if (cbCustomerSale.SelectedIndex == -1 || dgvCart.Rows.Count == 0)
+                {
+                    MessageBox.Show("Please select a customer and ensure the cart has items.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // ✅ Get Customer ID safely
+                int customerId = Convert.ToInt32(cbCustomerSale.SelectedValue);
+
+                // ✅ Parse total from label
+                string totalText = lblTotal.Text.Replace("Total: R", "").Trim();
+                decimal totalSale = decimal.TryParse(totalText, out decimal parsedTotal) ? parsedTotal : 0;
+
+                // ✅ Insert into Sale table and get SaleID
+                object newIdObj = saleTableAdapter1.InsertSaleReturnID(customerId, totalSale, DateTime.Now);
+                int saleId = (newIdObj != null && int.TryParse(newIdObj.ToString(), out int sId)) ? sId : 0;
+
+                if (saleId == 0)
+                {
+                    MessageBox.Show("Failed to retrieve Sale ID after insert.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // ✅ Loop and insert SaleItems
+                foreach (DataGridViewRow row in dgvCart.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    string productName = row.Cells["colProductName"].Value?.ToString();
+                    string quantityStr = row.Cells["colQuantity"].Value?.ToString()?.Trim();
+                    string priceStr = row.Cells["colPrice"].Value?.ToString()?.Trim();
+
+                    // Skip if quantity is missing or zero
+                    if (string.IsNullOrWhiteSpace(quantityStr) || quantityStr == "0") continue;
+
+                    if (!int.TryParse(quantityStr, out int quantity) || quantity <= 0) continue;
+                    if (!decimal.TryParse(priceStr, out decimal price) || price <= 0) continue;
+
+                    // Get ProductID
+                    object productIdObj = productTableAdapter.GetProductIDByName(productName);
+                    if (productIdObj == null) continue;
+
+                    int productId = Convert.ToInt32(productIdObj);
+
+                    // Insert into SaleItem
+                    saleItemTableAdapter1.InsertSaleItem(saleId, productId, quantity, price);
+                }
+
+
+                MessageBox.Show("Sale saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvCart.Rows.Clear();
+                lblTotal.Text = "Total: R0.00";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to save sale: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            LoadSales();
         }
 
-        private void LoadInvoices()
+        private void LoadSales()
         {
-            dgvInvoice.DataSource = invoiceItemTableAdapter.GetData(); 
+            // dgvInvoice.DataSource = invoiceItemTableAdapter.GetData(); 
+            try
+            {
+                // Load from SaleTableAdapter into your DataGridView
+                dgvSale.DataSource = saleTableAdapter1.GetData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load sales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvAppointments_CellMouseEnter_1(object sender, DataGridViewCellEventArgs e)
