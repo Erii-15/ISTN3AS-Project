@@ -691,7 +691,10 @@ namespace WindowsFormsApp1
         {
             this.appointmentTableAdapter1.Fill(this.wstGrp14DataSet.Appointment);
             dgvAppointments.DataSource = wstGrp14DataSet.Appointment;
-            
+
+            var data = appointmentTableAdapter1.GetData(); // Or your query
+            appointmentBindingSource.DataSource = data;
+            dgvAppointments.DataSource = appointmentBindingSource;
 
 
         }
@@ -1713,7 +1716,19 @@ namespace WindowsFormsApp1
 
         }
 
-        
+        private void txtSearchAppointment_TextChanged(object sender, EventArgs e)
+        {
+            string filterText = txtSearchAppointment.Text.Trim().Replace("'", "''"); // handle single quotes
+            if (string.IsNullOrEmpty(filterText))
+            {
+                appointmentBindingSource.RemoveFilter(); // Show all
+            }
+            else
+            {
+                // Assuming 'Status' is a column in your DataTable
+                appointmentBindingSource.Filter = $"Status LIKE '%{filterText}%'";
+            }
+        }
     }
 }
 
