@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
             //Load appointments into DataGridView
             LoadAppointments();
 
-            
+
 
 
             //dgvAppointments.ReadOnly = true;
@@ -158,26 +158,36 @@ namespace WindowsFormsApp1
             //dgvAppointments.Columns["Comments"].ReadOnly = false;
             //dgvAppointments.Columns["Rating"].ReadOnly = false;
 
+
             if (!dgvAppointments.Columns.Contains("CustomerName"))
             {
                 DataGridViewTextBoxColumn nameCol = new DataGridViewTextBoxColumn();
                 nameCol.Name = "CustomerName";
-                nameCol.HeaderText = "CustomerName";
+                nameCol.HeaderText = "Customer Name";
                 nameCol.Visible = false; // keep it hidden
                 dgvAppointments.Columns.Add(nameCol);
             }
+
             foreach (DataGridViewRow row in dgvAppointments.Rows)
             {
-                if (row.Cells.Count > 0 && row.Cells[1].Value != null)
+                if (row.Cells.Count > 1 &&
+                    row.Cells[1].Value != null &&
+                    row.Cells[1].Value != DBNull.Value)
                 {
-                    int customerId = Convert.ToInt32(row.Cells[1].Value);
-                    var customer = customerTableAdapter.GetData().FirstOrDefault(c => c.CustomerID == customerId);
-                    if (customer != null)
+                    int customerId;
+                    if (int.TryParse(row.Cells[1].Value.ToString(), out customerId))
                     {
-                        row.Cells["CustomerName"].Value = customer.FirstName + " " + customer.LastName;
+                        var customer = customerTableAdapter.GetData()
+                                          .FirstOrDefault(c => c.CustomerID == customerId);
+                        if (customer != null)
+                        {
+                            row.Cells["CustomerName"].Value = customer.FirstName + " " + customer.LastName;
+                        }
                     }
                 }
             }
+
+
 
 
 
