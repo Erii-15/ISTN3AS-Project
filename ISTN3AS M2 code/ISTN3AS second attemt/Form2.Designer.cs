@@ -146,6 +146,7 @@
             this.staffBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.cbServices = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvSaleItems = new System.Windows.Forms.DataGridView();
             this.label67 = new System.Windows.Forms.Label();
             this.dgvSalesHistory = new System.Windows.Forms.DataGridView();
             this.label65 = new System.Windows.Forms.Label();
@@ -246,6 +247,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblCustomerInvoice = new System.Windows.Forms.Label();
+            this.dgvCustomerAppointments = new System.Windows.Forms.DataGridView();
             this.label66 = new System.Windows.Forms.Label();
             this.cbCustomerSale = new System.Windows.Forms.ComboBox();
             this.dgvSale = new System.Windows.Forms.DataGridView();
@@ -291,7 +295,10 @@
             this.button14 = new System.Windows.Forms.Button();
             this.saleTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.SaleTableAdapter();
             this.saleItemTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.SaleItemTableAdapter();
-            this.dgvSaleItems = new System.Windows.Forms.DataGridView();
+            this.serviceItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.serviceItemTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.ServiceItemTableAdapter();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.Sales = new System.Windows.Forms.GroupBox();
             this.tabInvoice.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl4.SuspendLayout();
@@ -316,6 +323,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource3)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointmentHistory)).BeginInit();
             this.tabControl3.SuspendLayout();
@@ -330,6 +338,8 @@
             this.addStafftab.SuspendLayout();
             this.updateStafftab.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerAppointments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -341,7 +351,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serviceItemBindingSource)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.Sales.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabInvoice
@@ -1557,19 +1569,13 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.dgvSaleItems);
-            this.tabPage3.Controls.Add(this.label67);
-            this.tabPage3.Controls.Add(this.dgvSalesHistory);
             this.tabPage3.Controls.Add(this.label65);
-            this.tabPage3.Controls.Add(this.label57);
-            this.tabPage3.Controls.Add(this.label56);
-            this.tabPage3.Controls.Add(this.lblCustomerHeader);
-            this.tabPage3.Controls.Add(this.dgvAppointmentHistory);
             this.tabPage3.Controls.Add(this.CustomerSearchtxt);
             this.tabPage3.Controls.Add(this.label28);
             this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.tabControl3);
             this.tabPage3.Controls.Add(this.dataGridView2);
+            this.tabPage3.Controls.Add(this.groupBox4);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
@@ -1579,10 +1585,18 @@
             this.tabPage3.Text = "CUSTOMER";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // dgvSaleItems
+            // 
+            this.dgvSaleItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSaleItems.Location = new System.Drawing.Point(412, 280);
+            this.dgvSaleItems.Name = "dgvSaleItems";
+            this.dgvSaleItems.Size = new System.Drawing.Size(338, 265);
+            this.dgvSaleItems.TabIndex = 12;
+            // 
             // label67
             // 
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(416, 384);
+            this.label67.Location = new System.Drawing.Point(20, 247);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(138, 20);
             this.label67.TabIndex = 11;
@@ -1591,7 +1605,7 @@
             // dgvSalesHistory
             // 
             this.dgvSalesHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSalesHistory.Location = new System.Drawing.Point(411, 416);
+            this.dgvSalesHistory.Location = new System.Drawing.Point(15, 280);
             this.dgvSalesHistory.Name = "dgvSalesHistory";
             this.dgvSalesHistory.Size = new System.Drawing.Size(349, 265);
             this.dgvSalesHistory.TabIndex = 10;
@@ -1609,7 +1623,7 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(403, 164);
+            this.label57.Location = new System.Drawing.Point(11, 25);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(197, 20);
             this.label57.TabIndex = 8;
@@ -1618,7 +1632,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(854, 164);
+            this.label56.Location = new System.Drawing.Point(439, 22);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(100, 20);
             this.label56.TabIndex = 7;
@@ -1627,7 +1641,7 @@
             // lblCustomerHeader
             // 
             this.lblCustomerHeader.AutoSize = true;
-            this.lblCustomerHeader.Location = new System.Drawing.Point(960, 164);
+            this.lblCustomerHeader.Location = new System.Drawing.Point(555, 22);
             this.lblCustomerHeader.Name = "lblCustomerHeader";
             this.lblCustomerHeader.Size = new System.Drawing.Size(39, 20);
             this.lblCustomerHeader.TabIndex = 6;
@@ -1638,7 +1652,7 @@
             this.dgvAppointmentHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvAppointmentHistory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvAppointmentHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAppointmentHistory.Location = new System.Drawing.Point(407, 198);
+            this.dgvAppointmentHistory.Location = new System.Drawing.Point(15, 65);
             this.dgvAppointmentHistory.Name = "dgvAppointmentHistory";
             this.dgvAppointmentHistory.RowHeadersWidth = 51;
             this.dgvAppointmentHistory.Size = new System.Drawing.Size(756, 173);
@@ -1666,10 +1680,10 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(18, 155);
+            this.button7.Location = new System.Drawing.Point(14, 155);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(364, 55);
+            this.button7.Size = new System.Drawing.Size(364, 60);
             this.button7.TabIndex = 2;
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
@@ -2646,9 +2660,10 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.Sales);
+            this.tabPage6.Controls.Add(this.groupBox3);
             this.tabPage6.Controls.Add(this.label66);
             this.tabPage6.Controls.Add(this.cbCustomerSale);
-            this.tabPage6.Controls.Add(this.dgvSale);
             this.tabPage6.Controls.Add(this.SaveInvoice);
             this.tabPage6.Controls.Add(this.label53);
             this.tabPage6.Controls.Add(this.btnCalculateTotal);
@@ -2664,10 +2679,39 @@
             this.tabPage6.Text = "INVOICE";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.groupBox3.Controls.Add(this.lblCustomerInvoice);
+            this.groupBox3.Controls.Add(this.dgvCustomerAppointments);
+            this.groupBox3.Location = new System.Drawing.Point(685, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(484, 307);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Appointment Details";
+            // 
+            // lblCustomerInvoice
+            // 
+            this.lblCustomerInvoice.AutoSize = true;
+            this.lblCustomerInvoice.Location = new System.Drawing.Point(72, 60);
+            this.lblCustomerInvoice.Name = "lblCustomerInvoice";
+            this.lblCustomerInvoice.Size = new System.Drawing.Size(69, 20);
+            this.lblCustomerInvoice.TabIndex = 1;
+            this.lblCustomerInvoice.Text = "------------";
+            // 
+            // dgvCustomerAppointments
+            // 
+            this.dgvCustomerAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomerAppointments.Location = new System.Drawing.Point(26, 110);
+            this.dgvCustomerAppointments.Name = "dgvCustomerAppointments";
+            this.dgvCustomerAppointments.Size = new System.Drawing.Size(445, 143);
+            this.dgvCustomerAppointments.TabIndex = 0;
+            // 
             // label66
             // 
             this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(657, 29);
+            this.label66.Location = new System.Drawing.Point(58, 15);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(78, 20);
             this.label66.TabIndex = 8;
@@ -2678,7 +2722,7 @@
             this.cbCustomerSale.DataSource = this.customerBindingSource2;
             this.cbCustomerSale.DisplayMember = "CustomerID";
             this.cbCustomerSale.FormattingEnabled = true;
-            this.cbCustomerSale.Location = new System.Drawing.Point(661, 52);
+            this.cbCustomerSale.Location = new System.Drawing.Point(158, 12);
             this.cbCustomerSale.Name = "cbCustomerSale";
             this.cbCustomerSale.Size = new System.Drawing.Size(168, 28);
             this.cbCustomerSale.TabIndex = 7;
@@ -2694,7 +2738,7 @@
             this.salePriceDataGridViewTextBoxColumn,
             this.saleDateDataGridViewTextBoxColumn});
             this.dgvSale.DataSource = this.saleBindingSource;
-            this.dgvSale.Location = new System.Drawing.Point(46, 391);
+            this.dgvSale.Location = new System.Drawing.Point(122, 66);
             this.dgvSale.Name = "dgvSale";
             this.dgvSale.Size = new System.Drawing.Size(598, 129);
             this.dgvSale.TabIndex = 6;
@@ -2951,6 +2995,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel1.Controls.Add(this.button14);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
@@ -2984,14 +3029,41 @@
             // 
             this.saleItemTableAdapter1.ClearBeforeFill = true;
             // 
-            // dgvSaleItems
+            // serviceItemBindingSource
             // 
-            this.dgvSaleItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSaleItems.Location = new System.Drawing.Point(807, 416);
-            this.dgvSaleItems.Name = "dgvSaleItems";
-            this.dgvSaleItems.Size = new System.Drawing.Size(338, 265);
-            this.dgvSaleItems.TabIndex = 12;
-//            this.dgvSaleItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSaleItems_CellContentClick);
+            this.serviceItemBindingSource.DataMember = "ServiceItem";
+            this.serviceItemBindingSource.DataSource = this.wstGrp14DataSet;
+            // 
+            // serviceItemTableAdapter1
+            // 
+            this.serviceItemTableAdapter1.ClearBeforeFill = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox4.Controls.Add(this.dgvSaleItems);
+            this.groupBox4.Controls.Add(this.label57);
+            this.groupBox4.Controls.Add(this.label67);
+            this.groupBox4.Controls.Add(this.dgvSalesHistory);
+            this.groupBox4.Controls.Add(this.label56);
+            this.groupBox4.Controls.Add(this.lblCustomerHeader);
+            this.groupBox4.Controls.Add(this.dgvAppointmentHistory);
+            this.groupBox4.Location = new System.Drawing.Point(396, 150);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(784, 554);
+            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "CUSTOMER HISORY";
+            // 
+            // Sales
+            // 
+            this.Sales.Controls.Add(this.dgvSale);
+            this.Sales.Location = new System.Drawing.Point(36, 451);
+            this.Sales.Name = "Sales";
+            this.Sales.Size = new System.Drawing.Size(1023, 228);
+            this.Sales.TabIndex = 11;
+            this.Sales.TabStop = false;
+            this.Sales.Text = "SALES RECORDS";
             // 
             // Form2
             // 
@@ -3036,6 +3108,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource3)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointmentHistory)).EndInit();
             this.tabControl3.ResumeLayout(false);
@@ -3056,6 +3129,9 @@
             this.updateStafftab.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerAppointments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
@@ -3067,7 +3143,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serviceItemBindingSource)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.Sales.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3335,5 +3414,12 @@
         private System.Windows.Forms.DataGridView dgvSalesHistory;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.DataGridView dgvSaleItems;
+        private System.Windows.Forms.BindingSource serviceItemBindingSource;
+        private WstGrp14DataSetTableAdapters.ServiceItemTableAdapter serviceItemTableAdapter1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dgvCustomerAppointments;
+        private System.Windows.Forms.Label lblCustomerInvoice;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox Sales;
     }
 }

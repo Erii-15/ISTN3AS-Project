@@ -15,6 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using System.Windows.Forms;
 
 
+
 namespace WindowsFormsApp1
 {
     public partial class Form2 : Form
@@ -22,9 +23,13 @@ namespace WindowsFormsApp1
         System.Windows.Forms.ToolTip dgvToolTip = new System.Windows.Forms.ToolTip();
         // checking if changes are working
 
+        private WstGrp14DataSetTableAdapters.ServiceItemTableAdapter serviceItemTableAdapter = new WstGrp14DataSetTableAdapters.ServiceItemTableAdapter();
+
+
         public Form2()
         {
             InitializeComponent();
+
 
             dgvAppointments.CellToolTipTextNeeded += DgvAppointments_CellToolTipTextNeeded;
             dgvAppointments.ShowCellToolTips = true;
@@ -132,8 +137,10 @@ namespace WindowsFormsApp1
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'wstGrp14DataSet.ServiceItem' table. You can move, or remove it, as needed.
+            this.serviceItemTableAdapter1.Fill(this.wstGrp14DataSet.ServiceItem);
 
-            
+
 
             // TODO: This line of code loads data into the 'wstGrp14DataSet1.Service' table. You can move, or remove it, as needed.
             this.serviceTableAdapter.Fill(this.wstGrp14DataSet.Service);
@@ -191,12 +198,15 @@ namespace WindowsFormsApp1
 
 
 
+
+
             LoadCart();
 
             dgvSalesHistory.CellClick += dgvSalesHistory_CellClick;
 
 
 
+            dataGridView2.CellClick += dataGridView2_CellClick;
 
 
 
@@ -712,7 +722,7 @@ namespace WindowsFormsApp1
 
 
 
-
+        /*
         private void btnBook_Click(object sender, EventArgs e)
         {
             // Validate dropdowns
@@ -799,6 +809,24 @@ namespace WindowsFormsApp1
                 LoadAppointments();
                 ClearBookingForm();
                 MessageBox.Show("Appointment booked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                // ✅ Get new appointment ID from last insert (adjust if needed)
+                object newIdObj = appointmentTableAdapter1.InsertAppointmentReturnID(...);
+                int appointmentId = (newIdObj != null && int.TryParse(newIdObj.ToString(), out int id)) ? id : 0;
+
+                if (appointmentId > 0)
+                {
+                    // Get service price
+                    object priceObj = serviceTableAdapter.GetPriceById(serviceId);
+                    decimal price = priceObj != null ? Convert.ToDecimal(priceObj) : 0;
+
+                    // Insert into ServiceItem
+                    serviceItemTableAdapter.InsertLink(appointmentId, serviceId, price);
+                }
+
+
+
             }
             catch (Exception ex)
             {
@@ -809,7 +837,104 @@ namespace WindowsFormsApp1
         }
 
 
+        */
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+            if (cbCustomers.SelectedIndex == -1 ||
+                cbStaff.SelectedIndex == -1 ||
+                cbServices.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please fill in all required fields before booking.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            if (!TimeSpan.TryParse(txtTime.Text, out TimeSpan appointmentTime))
+            {
+                MessageBox.Show("Please enter a valid time in HH:mm format (e.g., 14:30).", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtComments.Text))
+            {
+                MessageBox.Show("Please enter a comment or note for the appointment.", "Missing Comments", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dtpDate.Value.Date < DateTime.Today)
+            {
+                MessageBox.Show("You cannot book an appointment in the past.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                int customerId = Convert.ToInt32(cbCustomers.SelectedValue);
+                int staffId = Convert.ToInt32(cbStaff.SelectedValue);
+                int serviceId = Convert.ToInt32(cbServices.SelectedValue);
+                DateTime appointmentDate = dtpDate.Value.Date;
+                string status = "Scheduled";
+                string comments = txtComments.Text;
+                int rating = 0;
+
+                int duration = serviceTableAdapter.GetDurationById(serviceId) ?? 30;
+                TimeSpan appointmentEnd = appointmentTime.Add(TimeSpan.FromMinutes(duration));
+
+                var staffConflict = wstGrp14DataSet.Appointment.AsEnumerable().FirstOrDefault(row =>
+                    row.Field<int>("StaffID") == staffId &&
+                    row.Field<DateTime>("AppointmentDate").Date == appointmentDate &&
+                    row.Field<string>("Status") != "Cancelled" &&
+                    appointmentTime < row.Field<TimeSpan>("AppointmentTime").Add(TimeSpan.FromMinutes(row.Field<int>("Duration"))) &&
+                    appointmentEnd > row.Field<TimeSpan>("AppointmentTime")
+                );
+
+                if (staffConflict != null)
+                {
+                    MessageBox.Show("This staff member is already booked during that time.", "Staff Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var customerConflict = wstGrp14DataSet.Appointment.AsEnumerable().FirstOrDefault(row =>
+                    row.Field<int>("CustomerID") == customerId &&
+                    row.Field<DateTime>("AppointmentDate").Date == appointmentDate &&
+                    row.Field<string>("Status") != "Cancelled" &&
+                    appointmentTime < row.Field<TimeSpan>("AppointmentTime").Add(TimeSpan.FromMinutes(row.Field<int>("Duration"))) &&
+                    appointmentEnd > row.Field<TimeSpan>("AppointmentTime")
+                );
+
+                if (customerConflict != null)
+                {
+                    MessageBox.Show("This customer already has an appointment during that time.", "Customer Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // ✅ Insert + Get AppointmentID
+                object newIdObj = appointmentTableAdapter1.InsertAppointmentReturnID(
+                    customerId, staffId, appointmentDate, appointmentTime, status, comments, rating, duration
+                );
+
+                int appointmentId = (newIdObj != null && int.TryParse(newIdObj.ToString(), out int id)) ? id : 0;
+
+                if (appointmentId > 0)
+                {
+                    object priceObj = serviceTableAdapter.GetPriceById(serviceId);
+                    decimal price = priceObj != null ? Convert.ToDecimal(priceObj) : 0;
+
+                    serviceItemTableAdapter.Insert(appointmentId, serviceId, price);
+
+                    LoadAppointments();
+                    ClearBookingForm();
+                    MessageBox.Show("Appointment booked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to retrieve Appointment ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Booking failed:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
 
@@ -1434,6 +1559,58 @@ namespace WindowsFormsApp1
                 int customerId = Convert.ToInt32(dataGridView2.CurrentRow.Cells["customerIDDataGridViewTextBoxColumn"].Value);
                 LoadSalesHistory(customerId);
             }
+
+
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView2.Rows.Count)
+            {
+                var row = dataGridView2.Rows[e.RowIndex];
+
+                int customerId = Convert.ToInt32(row.Cells["customerIDDataGridViewTextBoxColumn"].Value);
+                string customerName = row.Cells["firstNameDataGridViewTextBoxColumn"].Value?.ToString() ?? "";
+
+                // Update the label above the history grid
+                lblCustomerInvoice.Text = $"Appointments for: {customerName} (ID: {customerId})";
+
+                // Load appointments from your custom query
+                var appointments = appointmentTableAdapter1.GetAppointmentsWithServiceByCustomerID(customerId);
+                dgvCustomerAppointments.DataSource = appointments;
+
+
+
+                // Bind the data
+                dgvCustomerAppointments.DataSource = appointmentTableAdapter1.GetAppointmentsWithServiceByCustomerID(customerId);
+
+                // Hide unwanted columns
+                if (dgvCustomerAppointments.Columns.Contains("CustomerID"))
+                    dgvCustomerAppointments.Columns["CustomerID"].Visible = false;
+
+                if (dgvCustomerAppointments.Columns.Contains("StaffID"))
+                    dgvCustomerAppointments.Columns["StaffID"].Visible = false;
+
+                if (dgvCustomerAppointments.Columns.Contains("Duration"))
+                    dgvCustomerAppointments.Columns["Duration"].Visible = false;
+
+
+
+                // Highlight cancelled and past appointments
+                foreach (DataGridViewRow apptRow in dgvCustomerAppointments.Rows)
+                {
+                    if (apptRow.Cells["Status"].Value?.ToString() == "Cancelled")
+                    {
+                        apptRow.DefaultCellStyle.BackColor = Color.LightCoral;
+                    }
+                    else if (DateTime.TryParse(apptRow.Cells["AppointmentDate"].Value?.ToString(), out DateTime date)
+                          && date.Date < DateTime.Today)
+                    {
+                        apptRow.DefaultCellStyle.BackColor = Color.LightYellow;
+                    }
+                }
+            }
+
+
+
+
+
         }
 
 
