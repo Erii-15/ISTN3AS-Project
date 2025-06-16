@@ -6616,9 +6616,10 @@ namespace WindowsFormsApp1.WstGrp14DataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Appointment] ([AppointmentID], [CustomerID], [StaffID], [AppointmentDate], [AppointmentTime], [Status], [Comments], [Rating], [Duration]) VALUES (@AppointmentID, @CustomerID, @StaffID, @AppointmentDate, @AppointmentTime, @Status, @Comments, @Rating, @Duration)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Appointment] ([CustomerID], [StaffID], [AppointmentDate], [Appointme" +
+                "ntTime], [Status], [Comments], [Rating], [Duration]) VALUES (@CustomerID, @Staff" +
+                "ID, @AppointmentDate, @AppointmentTime, @Status, @Comments, @Rating, @Duration)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AppointmentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AppointmentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StaffID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StaffID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AppointmentDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AppointmentDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6642,8 +6643,9 @@ namespace WindowsFormsApp1.WstGrp14DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[9];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT AppointmentID, CustomerID, StaffID, AppointmentDate, AppointmentTime, Stat" +
-                "us, Comments, Rating, Duration FROM dbo.Appointment";
+            this._commandCollection[0].CommandText = "SELECT        AppointmentID, CustomerID, StaffID, AppointmentDate, AppointmentTim" +
+                "e, Status, Comments, Rating, Duration\r\nFROM            Appointment\r\nORDER BY App" +
+                "ointmentID DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -6678,11 +6680,10 @@ WHERE        (Appointment.CustomerID = @CustomerID)";
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"SELECT        A.AppointmentID, A.CustomerID, C.FirstName + ' ' + C.LastName AS CustomerName, A.StaffID, S.FirstName + ' ' + S.LastName AS StaffName, A.AppointmentDate, A.AppointmentTime, A.Status, A.Comments, A.Rating, 
-                         A.Duration
-FROM            Appointment AS A INNER JOIN
-                         Customer AS C ON A.CustomerID = C.CustomerID INNER JOIN
-                         Staff AS S ON A.StaffID = S.StaffID";
+            this._commandCollection[3].CommandText = "SELECT A.AppointmentDate, A.AppointmentID, A.AppointmentTime, A.Comments, A.Custo" +
+                "merID, A.Duration, A.Rating, A.StaffID, A.Status FROM Appointment AS A INNER JOI" +
+                "N Customer AS C ON A.CustomerID = C.CustomerID INNER JOIN Staff AS S ON A.StaffI" +
+                "D = S.StaffID";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
@@ -6894,55 +6895,54 @@ FROM            Appointment AS A INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int AppointmentID, global::System.Nullable<int> CustomerID, global::System.Nullable<int> StaffID, global::System.Nullable<global::System.DateTime> AppointmentDate, global::System.Nullable<global::System.TimeSpan> AppointmentTime, string Status, string Comments, global::System.Nullable<int> Rating, global::System.Nullable<int> Duration) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(AppointmentID));
+        public virtual int Insert(global::System.Nullable<int> CustomerID, global::System.Nullable<int> StaffID, global::System.Nullable<global::System.DateTime> AppointmentDate, global::System.Nullable<global::System.TimeSpan> AppointmentTime, string Status, string Comments, global::System.Nullable<int> Rating, global::System.Nullable<int> Duration) {
             if ((CustomerID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(CustomerID.Value));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CustomerID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((StaffID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(StaffID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((StaffID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(StaffID.Value));
+            if ((AppointmentDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(AppointmentDate.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((AppointmentDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(AppointmentDate.Value));
+            if ((AppointmentTime.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.TimeSpan)(AppointmentTime.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((AppointmentTime.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((System.TimeSpan)(AppointmentTime.Value));
-            }
-            else {
+            if ((Status == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Status == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Status));
+            }
+            if ((Comments == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Status));
-            }
-            if ((Comments == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Comments));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Comments));
             }
             if ((Rating.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Rating.Value));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Rating.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Duration.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Duration.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((Duration.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(Duration.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

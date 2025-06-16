@@ -132,8 +132,11 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            tabInvoice.SelectedTab = tabPage5;
+            tabInvoice.SelectedTab = tabPage6;
         }
+
+
+        
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -720,124 +723,6 @@ namespace WindowsFormsApp1
 
 
 
-
-
-        /*
-        private void btnBook_Click(object sender, EventArgs e)
-        {
-            // Validate dropdowns
-            if (cbCustomers.SelectedIndex == -1 ||
-                cbStaff.SelectedIndex == -1 ||
-                cbServices.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please fill in all required fields before booking.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Validate time format (manually typed)
-            if (!TimeSpan.TryParse(txtTime.Text, out TimeSpan appointmentTime))
-            {
-                MessageBox.Show("Please enter a valid time in HH:mm format (e.g., 14:30).", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Validate comments
-            if (string.IsNullOrWhiteSpace(txtComments.Text))
-            {
-                MessageBox.Show("Please enter a comment or note for the appointment.", "Missing Comments", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Prevent past dates
-            if (dtpDate.Value.Date < DateTime.Today)
-            {
-                MessageBox.Show("You cannot book an appointment in the past.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-
-                int customerId = Convert.ToInt32(cbCustomers.SelectedValue);
-                int staffId = Convert.ToInt32(cbStaff.SelectedValue);
-                int serviceId = Convert.ToInt32(cbServices.SelectedValue);
-                DateTime appointmentDate = dtpDate.Value.Date;
-                string status = "Scheduled";
-                string comments = txtComments.Text;
-                int rating = 0;
-
-                //  Get duration from service 
-                int duration = serviceTableAdapter.GetDurationById(serviceId) ?? 30;  
-                TimeSpan appointmentEnd = appointmentTime.Add(TimeSpan.FromMinutes(duration));
-
-                //Staff conflict: overlapping appointment
-                var staffConflict = wstGrp14DataSet.Appointment.AsEnumerable().FirstOrDefault(row =>
-                    row.Field<int>("StaffID") == staffId &&
-                    row.Field<DateTime>("AppointmentDate").Date == appointmentDate &&
-                    row.Field<string>("Status") != "Cancelled" &&
-                    appointmentTime < row.Field<TimeSpan>("AppointmentTime").Add(TimeSpan.FromMinutes(row.Field<int>("Duration"))) &&
-                    appointmentEnd > row.Field<TimeSpan>("AppointmentTime")
-                );
-
-                if (staffConflict != null)
-                {
-                    MessageBox.Show("This staff member is already booked during that time.", "Staff Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Customer conflict: overlapping appointment
-                var customerConflict = wstGrp14DataSet.Appointment.AsEnumerable().FirstOrDefault(row =>
-                    row.Field<int>("CustomerID") == customerId &&
-                    row.Field<DateTime>("AppointmentDate").Date == appointmentDate &&
-                    row.Field<string>("Status") != "Cancelled" &&
-                    appointmentTime < row.Field<TimeSpan>("AppointmentTime").Add(TimeSpan.FromMinutes(row.Field<int>("Duration"))) &&
-                    appointmentEnd > row.Field<TimeSpan>("AppointmentTime")
-                );
-
-                if (customerConflict != null)
-                {
-                    MessageBox.Show("This customer already has an appointment during that time.", "Customer Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Insert appointment
-                appointmentTableAdapter1.InsertAppointment(
-                    customerId, staffId, appointmentDate, appointmentTime,
-                    status, comments, rating, duration
-                );
-
-                LoadAppointments();
-                ClearBookingForm();
-                MessageBox.Show("Appointment booked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                // ✅ Get new appointment ID from last insert (adjust if needed)
-                object newIdObj = appointmentTableAdapter1.InsertAppointmentReturnID(...);
-                int appointmentId = (newIdObj != null && int.TryParse(newIdObj.ToString(), out int id)) ? id : 0;
-
-                if (appointmentId > 0)
-                {
-                    // Get service price
-                    object priceObj = serviceTableAdapter.GetPriceById(serviceId);
-                    decimal price = priceObj != null ? Convert.ToDecimal(priceObj) : 0;
-
-                    // Insert into ServiceItem
-                    serviceItemTableAdapter.InsertLink(appointmentId, serviceId, price);
-                }
-
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Booking failed:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
-
-
-        */
         private void btnBook_Click(object sender, EventArgs e)
         {
             if (cbCustomers.SelectedIndex == -1 ||
@@ -907,7 +792,25 @@ namespace WindowsFormsApp1
                     return;
                 }
 
-                // ✅ Insert + Get AppointmentID
+                
+                string summary = $"Please confirm the following appointment:\n\n" +
+                                 $"Customer: {cbCustomers.Text}\n" +
+                                 $"Staff: {cbStaff.Text}\n" +
+                                 $"Service: {cbServices.Text}\n" +
+                                 $"Date: {appointmentDate:yyyy-MM-dd}\n" +
+                                 $"Time: {appointmentTime:hh\\:mm}\n" +
+                                 $"Duration: {duration} minutes\n" +
+                                 $"Comments: {comments}\n";
+
+                DialogResult confirm = MessageBox.Show(summary, "Confirm Appointment", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirm != DialogResult.Yes)
+                {
+                    MessageBox.Show("Appointment not saved.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+               // Insert + Get AppointmentID
                 object newIdObj = appointmentTableAdapter1.InsertAppointmentReturnID(
                     customerId, staffId, appointmentDate, appointmentTime, status, comments, rating, duration
                 );
@@ -935,6 +838,8 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Booking failed:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
@@ -1276,6 +1181,9 @@ namespace WindowsFormsApp1
             lblTotal.Text = $"Total: R {discountedTotal:F2}";
         }
 
+
+        /*
+
         private void SaveInvoiceToDatabase()
         {
             decimal total = 0;
@@ -1327,6 +1235,12 @@ namespace WindowsFormsApp1
 
         }
 
+
+        */
+
+
+
+
         private void SaveInvoice_Click(object sender, EventArgs e)
         {
             try
@@ -1337,14 +1251,14 @@ namespace WindowsFormsApp1
                     return;
                 }
 
-                // ✅ Get Customer ID safely
+               
                 int customerId = Convert.ToInt32(cbCustomerSale.SelectedValue);
 
-                // ✅ Parse total from label
+                
                 string totalText = lblTotal.Text.Replace("Total: R", "").Trim();
                 decimal totalSale = decimal.TryParse(totalText, out decimal parsedTotal) ? parsedTotal : 0;
 
-                // ✅ Insert into Sale table and get SaleID
+                // Insert into Sale table and get SaleID
                 object newIdObj = saleTableAdapter1.InsertSaleReturnID(customerId, totalSale, DateTime.Now);
                 int saleId = (newIdObj != null && int.TryParse(newIdObj.ToString(), out int sId)) ? sId : 0;
 
@@ -1354,7 +1268,7 @@ namespace WindowsFormsApp1
                     return;
                 }
 
-                // ✅ Loop and insert SaleItems
+                // Loop and insert SaleItems
                 foreach (DataGridViewRow row in dgvCart.Rows)
                 {
                     if (row.IsNewRow) continue;
@@ -1363,12 +1277,12 @@ namespace WindowsFormsApp1
                     string quantityStr = row.Cells["colQuantity"].Value?.ToString()?.Trim();
                     string priceStr = row.Cells["colPrice"].Value?.ToString()?.Trim();
 
-                    // ❌ Skip if quantity is missing or 0
+                    // Skip if quantity is missing or 0
                     if (string.IsNullOrWhiteSpace(quantityStr) || quantityStr == "0") continue;
                     if (!int.TryParse(quantityStr, out int quantity) || quantity <= 0) continue;
                     if (!decimal.TryParse(priceStr, out decimal price) || price <= 0) continue;
 
-                    // ✅ Get ProductID using updated GetProductIDByName
+                    // Get ProductID using updated GetProductIDByName
                     object productIdObj = productTableAdapter.GetProductIDByName(productName);
                     if (productIdObj == null)
                     {
@@ -1378,13 +1292,26 @@ namespace WindowsFormsApp1
 
                     int productId = Convert.ToInt32(productIdObj);
 
-                    // ✅ Insert into SaleItem table
+                    // Insert into SaleItem table
                     saleItemTableAdapter1.InsertSaleItem(saleId, productId, quantity, price);
                 }
 
                 MessageBox.Show("Sale saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgvCart.Rows.Clear();
+
+                foreach (DataGridViewRow row in dgvCart.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    row.Cells["colQuantity"].Value = null;
+                    row.Cells["colLineTotal"].Value = null;
+                    row.Cells["colLineTotal"].Value = null;
+
+                }
+
+
+
                 lblTotal.Text = "Total: R0.00";
+                txtDiscount.Text = "";
                 LoadSales(); // Reload to reflect the new sale
             }
             catch (Exception ex)
