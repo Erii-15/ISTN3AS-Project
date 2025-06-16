@@ -179,3 +179,4 @@ C:\Users\223046815\Desktop\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt
 C:\Users\223046815\Desktop\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\223046815\Desktop\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\obj\Debug\WindowsFormsApp1.exe
 C:\Users\223046815\Desktop\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\223046815\Desktop\ISTN3AS-Project\ISTN3AS M2 code\ISTN3AS second attemt\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache

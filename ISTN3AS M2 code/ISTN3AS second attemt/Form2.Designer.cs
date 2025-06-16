@@ -146,6 +146,8 @@
             this.staffBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.cbServices = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label67 = new System.Windows.Forms.Label();
+            this.dgvSalesHistory = new System.Windows.Forms.DataGridView();
             this.label65 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
@@ -289,6 +291,7 @@
             this.button14 = new System.Windows.Forms.Button();
             this.saleTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.SaleTableAdapter();
             this.saleItemTableAdapter1 = new WindowsFormsApp1.WstGrp14DataSetTableAdapters.SaleItemTableAdapter();
+            this.dgvSaleItems = new System.Windows.Forms.DataGridView();
             this.tabInvoice.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl4.SuspendLayout();
@@ -313,6 +316,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource3)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointmentHistory)).BeginInit();
             this.tabControl3.SuspendLayout();
             this.addCusttab.SuspendLayout();
@@ -337,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).BeginInit();
             this.SuspendLayout();
             // 
             // tabInvoice
@@ -1552,6 +1557,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dgvSaleItems);
+            this.tabPage3.Controls.Add(this.label67);
+            this.tabPage3.Controls.Add(this.dgvSalesHistory);
             this.tabPage3.Controls.Add(this.label65);
             this.tabPage3.Controls.Add(this.label57);
             this.tabPage3.Controls.Add(this.label56);
@@ -1570,6 +1578,23 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "CUSTOMER";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(416, 384);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(138, 20);
+            this.label67.TabIndex = 11;
+            this.label67.Text = "SALES HISTORY";
+            // 
+            // dgvSalesHistory
+            // 
+            this.dgvSalesHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSalesHistory.Location = new System.Drawing.Point(411, 416);
+            this.dgvSalesHistory.Name = "dgvSalesHistory";
+            this.dgvSalesHistory.Size = new System.Drawing.Size(349, 265);
+            this.dgvSalesHistory.TabIndex = 10;
             // 
             // label65
             // 
@@ -1616,7 +1641,7 @@
             this.dgvAppointmentHistory.Location = new System.Drawing.Point(407, 198);
             this.dgvAppointmentHistory.Name = "dgvAppointmentHistory";
             this.dgvAppointmentHistory.RowHeadersWidth = 51;
-            this.dgvAppointmentHistory.Size = new System.Drawing.Size(756, 253);
+            this.dgvAppointmentHistory.Size = new System.Drawing.Size(756, 173);
             this.dgvAppointmentHistory.TabIndex = 5;
             // 
             // CustomerSearchtxt
@@ -1970,6 +1995,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(1159, 98);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // customerIDDataGridViewTextBoxColumn
             // 
@@ -2958,6 +2984,15 @@
             // 
             this.saleItemTableAdapter1.ClearBeforeFill = true;
             // 
+            // dgvSaleItems
+            // 
+            this.dgvSaleItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSaleItems.Location = new System.Drawing.Point(807, 416);
+            this.dgvSaleItems.Name = "dgvSaleItems";
+            this.dgvSaleItems.Size = new System.Drawing.Size(338, 265);
+            this.dgvSaleItems.TabIndex = 12;
+//            this.dgvSaleItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSaleItems_CellContentClick);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3001,6 +3036,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource3)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSalesHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointmentHistory)).EndInit();
             this.tabControl3.ResumeLayout(false);
             this.addCusttab.ResumeLayout(false);
@@ -3031,6 +3067,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceItemBindingSource1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3295,5 +3332,8 @@
         private System.Windows.Forms.Label label66;
         private System.Windows.Forms.ComboBox cbCustomerSale;
         private WstGrp14DataSetTableAdapters.SaleItemTableAdapter saleItemTableAdapter1;
+        private System.Windows.Forms.DataGridView dgvSalesHistory;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.DataGridView dgvSaleItems;
     }
 }
